@@ -239,10 +239,6 @@ textarea:focus {
 # All Menus
 --------------------------------------------------------------*/
 
-.current_page_item a {
-	font-weight: 500;
-}
-
 nav ul a:hover {
 	background-color: transparent;
 }
@@ -286,7 +282,8 @@ nav ul a:hover {
     margin:0;
     display:block;
 	  width:150px;
-	  line-height: 60px;
+	  line-height: 1.5rem;
+    padding: 1rem 0.2rem;
 }
 
 .menu-primary-menu-container li li ul {
