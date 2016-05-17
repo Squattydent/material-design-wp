@@ -47,6 +47,8 @@ function materializecss_theme_setup() {
 		'primary' => esc_html__( 'Primary', 'materializecss-theme' ),
 		/* Let's add a Mobile Menu ! */
 		'mobile' => esc_html__( 'Mobile', 'materializecss-theme' ),
+		/* And a great Footer Menu ! */
+		'footer' => esc_html__( 'Footer', 'materializecss-theme' ),
 	) );
 
 	/*
@@ -104,10 +106,10 @@ function materializecss_theme_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'materializecss-theme' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'materializecss-theme' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="card"><div class="card-content">',
+		'after_widget'  => '</div></div></section>',
+		'before_title'  => '<span class="card-title">',
+		'after_title'   => '</span>',
 	) );
 }
 add_action( 'widgets_init', 'materializecss_theme_widgets_init' );
