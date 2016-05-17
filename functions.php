@@ -45,6 +45,8 @@ function materializecss_theme_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'materializecss-theme' ),
+		/* Let's add a Mobile Menu ! */
+		'mobile' => esc_html__( 'Mobile', 'materializecss-theme' ),
 	) );
 
 	/*
@@ -116,9 +118,11 @@ add_action( 'widgets_init', 'materializecss_theme_widgets_init' );
 function materializecss_theme_scripts() {
 	wp_enqueue_style( 'materializecss-theme-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'materializecss-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	/* We Won't need the Navigation Support from _s original Theme */
+	// wp_enqueue_script( 'materializecss-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'materializecss-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	/* We won't use the Skip Link funtionnalities anyway */
+	// wp_enqueue_script( 'materializecss-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -129,7 +133,8 @@ add_action( 'wp_enqueue_scripts', 'materializecss_theme_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+/* No use of the Custom Header for now */
+// require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
