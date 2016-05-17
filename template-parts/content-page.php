@@ -12,7 +12,7 @@
 		<div class="card">
 			<div class="card-content">
 				<h1><?php the_title(); ?></h1>
-				<div class="page-content">
+				<div class="content">
 					<?php the_content(); ?>
 				</div>
 			</div>

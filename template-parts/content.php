@@ -10,7 +10,7 @@
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<div class="card">
+		<div class="card content">
 			<div class="card-content">
 				<?php
 				if ( is_single() ) { ?>
