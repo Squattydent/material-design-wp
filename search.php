@@ -13,9 +13,6 @@ get_header(); ?>
 			<div class="col s12 m8 l9">
 				<?php
 					if ( have_posts() ) : ?>
-						<h1 class="page-title">
-							<?php printf( esc_html__( 'Search Results for: %s', 'materializecss-theme' ), '<span>' . get_search_query() . '</span>' ); ?>
-						</h1>
 					<?php
 					/* Start the Loop */
 					while ( have_posts() ) : the_post();

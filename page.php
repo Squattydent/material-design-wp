@@ -13,9 +13,9 @@
  */
 
 get_header(); ?>
-<div class="container">
+<div class="container page-container">
 	<div class="row">
-		<div class="col s12 m8 l9">
+		<div class="col s12">
 		<?php
 		while ( have_posts() ) : the_post();
 			get_template_part( 'template-parts/content', 'page' );
@@ -26,10 +26,8 @@ get_header(); ?>
 		endwhile; // End of the loop. 
 		?>
 		</div>
-		<div class="col s12 m4 l3">
-		<?php get_sidebar(); ?>
-		</div>
 	</div>
 </div>
-<?php 
+<?php
+// get_sidebar();
 get_footer();

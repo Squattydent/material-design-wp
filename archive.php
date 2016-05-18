@@ -13,10 +13,7 @@ get_header(); ?>
 			<div class="col s12 m8 l9">
 				<?php
 		if ( have_posts() ) : ?>
-					<h1><?php	single_cat_title(); ?></h1>
-					<p>
-						<?php the_archive_description(); ?>
-					</p>
+					<p>	<?php the_archive_description(); ?></p>
 					<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();

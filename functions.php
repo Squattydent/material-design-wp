@@ -44,11 +44,7 @@ function materializecss_theme_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'materializecss-theme' ),
-		/* Let's add a Mobile Menu ! */
-		'mobile' => esc_html__( 'Mobile', 'materializecss-theme' ),
-		/* And a great Footer Menu ! */
-		'footer' => esc_html__( 'Footer', 'materializecss-theme' ),
+		'primary' => esc_html__( 'Primary', 'materializecss-theme' )
 	) );
 
 	/*
@@ -106,9 +102,9 @@ function materializecss_theme_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'materializecss-theme' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'materializecss-theme' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="card"><div class="card-content">',
-		'after_widget'  => '</div></div></section>',
-		'before_title'  => '<span class="card-title">',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<span class="widget-title">',
 		'after_title'   => '</span>',
 	) );
 }
@@ -157,3 +153,34 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/**
+Function to display appropriate title in header
+**/
+function headerTitle() {
+	if (is_category()) {
+		single_cat_title();
+	} elseif (is_page() or is_single()) {
+	the_title();
+	} elseif (is_author()) {
+		the_author();
+	} elseif (is_search()) {
+		printf( esc_html__( 'Search Results for: %s', 'materializecss-theme' ), '<span>' . get_search_query() . '</span>' );
+	} elseif (is_tag()) {
+		single_tag_title();
+	} elseif (is_404()) {
+		echo "Code 404";
+	}
+}
+
+/***
+Remove Wordpress hardcoded image dimensions
+**/
+add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
+add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+
+function remove_thumbnail_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}

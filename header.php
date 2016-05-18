@@ -25,17 +25,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<?php wp_head(); ?>
 	</head>
+
 	<body <?php body_class(); ?>>
 		<main>
-			<nav class="light-blue darken-1">
-				<div class="container">
-					<div class="nav-wrapper">
-						<a href="<?php echo site_url(); ?>" class="brand-logo">
-							<?php bloginfo( 'name' ); ?>
-						</a>
-						<a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
-						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'right hide-on-med-and-down' ) ); ?>
-						<?php wp_nav_menu( array( 'theme_location' => 'mobile', 'menu_id' => 'mobile-menu', 'menu_class' => 'side-nav' ) ); ?>
+			<header class="light-blue darken-1">
+				<div class="navbar-fixed">
+					<nav class="transparent" id="main-navigation">
+						<div class="container">
+							<div class="nav-wrapper">
+								<a href="#!" class="brand-logo"><?php headerTitle();?></a>
+								<a href="#" data-activates="primary-menu" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+								<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'side-nav' ) ); ?>
+								<ul class="right" id="header-search">
+									<li id="search-loupe"><i class="material-icons left" style="cursor: pointer;">search</i></li>
+									<li><?php echo get_search_form(); ?></li>
+									<li id="search-close"><i class="material-icons right" style="cursor: pointer;">close</i></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+					<div class="container title-container">
+						<div class="row">
+							<div class="col s12">
+								<h1 class="white-text header-title"><?php headerTitle();?></h1>
+							</div>
+						</div>
 					</div>
 				</div>
-			</nav>
+			</header>

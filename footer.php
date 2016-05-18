@@ -23,12 +23,11 @@
 					<p class="grey-text text-lighten-4"><?php bloginfo('description'); ?></p>
 				</div>
 				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text">Footer Menu</h5>
-					<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu') ); ?>
+					<h5 class="white-text"></h5>
 				</div>
 			</div>
 		</div>
-		<div class="footer-copyright light-blue darken-3">
+		<div class="footer-copyright light-blue darken-2">
 			<div class="container">
 				<span>Theme by <a class="white-text" href="http://www.lugdev.com/" rel="designer">Lugdev.com</a></span>
 				<a class="grey-text text-lighten-4 right" href="<?php echo esc_url( __( 'https://wordpress.org/', 'materializecss-theme' ) ); ?>">
