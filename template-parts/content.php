@@ -19,7 +19,7 @@ if ( is_single() ) { ?>
 				?>
 				<img class="materialboxed responsive-img" alt="<?php echo get_post_meta( $thumbnail->ID, '_wp_attachment_image_alt', true ); ?>" title="<?php echo $thumbnail->post_title; ?>" data-caption="<?php echo $thumbnail->post_excerpt; ?>" src="<?php the_post_thumbnail_url('large'); ?>">
 		  <br>
-				<a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="waves-effect waves-light btn deep-orange">Full Size Image</a>
+				<a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="waves-effect waves-dark btn full-img-btn">Full Size Image</a>
 		  </div>
 		<?php } ?>
 			<div class="entry-content">

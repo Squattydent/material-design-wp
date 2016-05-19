@@ -64,9 +64,11 @@ function titleAnimation() {
 	if (scrollTop > titleEvent) {
 		$('.header-title').hide();
 		$('.brand-logo').show();
+			$('#header-search').hide();
 	} else {
 		$('.header-title').show();
 		$('.brand-logo').hide();
+		$('#header-search').show();
 	}
 }
 
@@ -75,10 +77,8 @@ function navAnimation() {
 	var navEvent = $('header').css("height").replace("px", "") - $('#main-navigation').css("height").replace("px", "");
 	if (scrollTop > navEvent) {
 		$('#main-navigation').addClass('light-blue darken-1').removeClass('transparent').css("box-shadow", "0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)");
-		$('#header-search').slideUp('100');
 	} else {
 		$('#main-navigation').addClass('transparent').removeClass('light-blue darken-1').css("box-shadow", "none");
-		$('#header-search').slideDown('100');
 	}
 }
 
@@ -88,11 +88,17 @@ Header Search Animations
 -----------------------------------*/
 
 $( "#search-loupe" ).click(function() {
-  $("label").slideToggle('100');
-	$("#search-close").slideToggle('100');
+  $("label").slideToggle();
+	$("#search-close").slideToggle();
 });
 
 $( "#search-close" ).click(function() {
-  $("label").slideToggle('100');
-	$("#search-close").slideToggle('100');
+  $("label").slideToggle();
+	$("#search-close").slideToggle();
 });
+
+
+
+/*-------------------------------------
+Ripple effect
+------------------------------------------*/

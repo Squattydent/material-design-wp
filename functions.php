@@ -171,7 +171,10 @@ function headerTitle() {
 		single_tag_title();
 	} elseif (is_404()) {
 		echo "Code 404";
+	} elseif (is_archive()) {
+		the_archive_title ();
 	}
+	
 }
 
 /***

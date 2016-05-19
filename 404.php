@@ -14,9 +14,8 @@ get_header(); ?>
 			<div class="col s12 m8 l9">
 				<h3><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'materializecss-theme' ); ?></h3>
 				<p>
-					<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'materializecss-theme' ); ?>
+					<?php esc_html_e( 'It looks like nothing was found at this location.', 'materializecss-theme' ); ?>
 				</p>
-				<?php get_search_form(); ?>
 			</div>
 			<div class="col s12 m4 l3">
 				<?php get_sidebar(); ?>
