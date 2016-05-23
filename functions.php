@@ -187,3 +187,279 @@ function remove_thumbnail_dimensions( $html ) {
     $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
     return $html;
 }
+
+
+/*----------------------------
+Theme Settings Panel
+-----------------------------*/
+
+function theme_settings_page()
+{
+    ?>
+	    <div class="wrap">
+	    <h1>Theme Panel</h1>
+	    <form method="post" action="options.php">
+	        <?php
+	            settings_fields("section");
+	            do_settings_sections("theme-options");      
+	            submit_button(); 
+	        ?>          
+	    </form>
+		</div>
+	<?php
+}
+
+function add_theme_menu_item()
+{
+	add_menu_page("Theme Panel", "Theme Panel", "manage_options", "theme-panel", "theme_settings_page", null, 99);
+}
+
+add_action("admin_menu", "add_theme_menu_item");
+
+function display_help_element()
+{
+	?>
+    	<p>Create your default Material Palette to give a nice look to your blog. To help you understand the roles of colors on Material Design, report to <a href="http://www.materialpalette.com/" target="_blank">Material Palette</a>.</p>
+    <?php
+}
+
+function display_primary_color_element()
+{
+	?>
+    	<input type="text" name="primary_color" id="primary_color" value="<?php echo get_option('primary_color'); ?>" />
+    <?php
+}
+
+function display_dark_primary_color_element()
+{
+	?>
+    	<input type="text" name="dark_primary_color" id="dark_primary_color" value="<?php echo get_option('dark_primary_color'); ?>" />
+    <?php
+}
+
+function display_light_primary_color_element()
+{
+	?>
+    	<input type="text" name="light_primary_color" id="light_primary_color" value="<?php echo get_option('light_primary_color'); ?>" />
+    <?php
+}
+
+function display_accent_color_element()
+{
+	?>
+    	<input type="text" name="accent_color" id="accent_color" value="<?php echo get_option('accent_color'); ?>" />
+    <?php
+}
+
+function display_icon_color_element()
+{
+	?>
+    	<input type="text" name="icon_color" id="icon_color" value="<?php echo get_option('icon_color'); ?>" />
+    <?php
+}
+
+function display_primary_text_element()
+{
+	?>
+    	<input type="text" name="primary_text" id="primary_text" value="<?php echo get_option('primary_text'); ?>" />
+    <?php
+}
+
+function display_secondary_text_element()
+{
+	?>
+    	<input type="text" name="secondary_text" id="secondary_text" value="<?php echo get_option('secondary_text'); ?>" />
+    <?php
+}
+
+function display_divider_color_element()
+{
+	?>
+    	<input type="text" name="divider_color" id="divider_color" value="<?php echo get_option('divider_color'); ?>" />
+    <?php
+}
+
+function display_theme_panel_fields()
+{
+	add_settings_section("section", "All Settings", null, "theme-options");
+	
+	add_settings_field("help", "Material Color Palette", "display_help_element", "theme-options", "section");
+	
+	add_settings_field("primary_color", "Primary Color", "display_primary_color_element", "theme-options", "section");
+	
+	add_settings_field("dark_primary_color", "Dark Primary Color", "display_dark_primary_color_element", "theme-options", "section");
+	
+	add_settings_field("light_primary_color", "Light Primary Color", "display_light_primary_color_element", "theme-options", "section");
+	
+	add_settings_field("icon_color", "Icons Color", "display_icon_color_element", "theme-options", "section");
+	
+	add_settings_field("accent_color", "Accent Color", "display_accent_color_element", "theme-options", "section");
+	
+	add_settings_field("primary_text", "Primary Text", "display_primary_text_element", "theme-options", "section");
+	
+	add_settings_field("secondary_text", "Secondary Text", "display_secondary_text_element", "theme-options", "section");
+	
+	add_settings_field("divider_color", "Divider Color", "display_divider_color_element", "theme-options", "section");
+  
+  register_setting("section", "primary_color");
+	
+	register_setting("section", "dark_primary_color");
+	
+	register_setting("section", "light_primary_color");
+	
+	register_setting("section", "icon_color");
+	
+	register_setting("section", "accent_color");
+	
+	register_setting("section", "primary_text");
+	
+	register_setting("section", "secondary_text");
+	
+	register_setting("section", "divider_color");
+	
+}
+
+add_action("admin_init", "display_theme_panel_fields");
+
+add_action('wp_head','material_styling');
+
+function material_styling() { 
+	$primary_color = get_option('primary_color');
+	$dark_primary_color = get_option('dark_primary_color');
+	$light_primary_color = get_option('light_primary_color');
+	$icon_color = get_option('icon_color');
+	$accent_color = get_option('accent_color');
+	$primary_text = get_option('primary_text');
+	$secondary_text = get_option('secondary_text');
+	$divider_color = get_option('divider_color'); ?>
+<style type="text/css">
+html {
+	color: <?php echo $primary_text; ?>;
+}
+header {
+	background-color:<?php echo $primary_color; ?>;
+}
+.primary-color {
+		background-color:<?php echo $primary_color; ?>!important;
+}
+.dark-primary-color {
+	background-color:<?php echo $dark_primary_color; ?>!important;
+}
+.header-title {
+	color:<?php echo $icon_color; ?>;
+}
+label {
+	color: <?php echo $secondary_text; ?>;
+}
+hr {
+	color: <?php echo $divider_color; ?>;
+	background-color: <?php echo $divider_color; ?>;
+}
+a {
+	color: <?php echo $accent_color; ?>;
+}
+a:hover {
+	color: <?php echo $accent_color; ?>;
+}
+h1,h2,h3,h4,h5,h6 {
+	color: <?php echo $primary_color; ?>;
+}
+.btn:hover,
+.btn-large:hover {
+	color: <?php echo $icon_color; ?>;
+}
+#the-search-form input[type=search] {
+	border-bottom: 1px solid <?php echo $icon_color; ?>;
+	color: <?php echo $icon_color; ?>;
+}
+#the-search-form  input[type=search]:focus {
+	border-bottom: 1px solid <?php echo $icon_color; ?>;
+	box-shadow: 0 1px 0 0 <?php echo $icon_color; ?>;
+}
+blockquote {
+	border-left: 5px solid <?php echo $accent_color; ?>;
+}
+.hentry {
+	border-bottom: 1px solid <?php echo $divider_color; ?>;
+}
+.widget-title {
+	color: <?php echo $secondary_text; ?>;
+}
+.widget {
+	border-bottom: 1px solid <?php echo $divider_color; ?>;
+}
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	color: <?php echo $icon_color; ?>;
+	background-color: <?php echo $accent_color; ?>;
+}
+
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	background-color: <?php echo $accent_color; ?>;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid <?php echo $accent_color; ?>;
+	box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
+}
+.full-img-btn {
+	background-color:<?php echo $secondary_text; ?>;
+	color:<?php echo $icon_color; ?>;
+}
+.full-img-btn:hover {
+	background-color:<?php echo $secondary_text; ?>;
+	color:<?php echo $icon_color; ?>;
+}
+textarea {
+	border-bottom: 1px solid <?php echo $divider_color; ?>;
+}
+textarea:focus {
+	border-bottom: 1px solid <?php echo $accent_color; ?>;
+	box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
+}
+.menu-header {
+	border-bottom: 1px solid <?php echo $secondary_text; ?>;
+	color:<?php echo $secondary_text; ?>;
+}
+#footer-menu li a,
+#footer-menu ul li a
+	{
+	color: <?php echo $icon_color; ?>;
+}
+nav .brand-logo:hover {
+	color: <?php echo $icon_color; ?>;
+}
+nav a.button-collapse:hover {
+	color: <?php echo $icon_color; ?>;
+}
+.side-nav a,
+.side-nav a:hover {
+	color:<?php echo $primary_text; ?>;
+}
+.sub-menu li {
+	background-color:<?php echo $icon_color; ?>;
+}
+.sub-menu .current-menu-item {
+	background-color:<?php echo $accent_color; ?>;
+}
+
+.sub-menu .current-menu-item a {
+	color:<?php echo $icon_color; ?>!important;
+}
+</style>
+<?php } ?>

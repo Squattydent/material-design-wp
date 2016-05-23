@@ -11,7 +11,7 @@
 
 ?>
 </main>
-	<footer class="page-footer light-blue darken-1">
+	<footer class="page-footer primary-color">
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer-copyright light-blue darken-2">
+		<div class="footer-copyright dark-primary-color">
 			<div class="container">
 				<span>Theme by <a class="white-text" href="http://www.lugdev.com/" rel="designer">Lugdev.com</a></span>
 				<a class="grey-text text-lighten-4 right" href="<?php echo esc_url( __( 'https://wordpress.org/', 'materializecss-theme' ) ); ?>">
@@ -42,6 +42,8 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- Compiled and minified Materialize JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <!-- JQuery Ui Min js  -->
+	<script src="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/js/jquery-ui.min.js"></script>
 	<!-- Our File materialize-wordpress.js  -->
 	<script src="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/js/materialize-wordpress.js"></script>
 	</body>

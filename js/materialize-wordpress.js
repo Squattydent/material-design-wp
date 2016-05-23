@@ -64,11 +64,11 @@ function titleAnimation() {
 	if (scrollTop > titleEvent) {
 		$('.header-title').hide();
 		$('.brand-logo').show();
-			$('#header-search').hide();
+		$('#header-search').hide('slide', { direction: 'right'}, 150);
 	} else {
 		$('.header-title').show();
 		$('.brand-logo').hide();
-		$('#header-search').show();
+		$('#header-search').show('slide', { direction: 'right'}, 150);
 	}
 }
 
@@ -76,9 +76,9 @@ function navAnimation() {
 	var scrollTop = $(window).scrollTop();
 	var navEvent = $('header').css("height").replace("px", "") - $('#main-navigation').css("height").replace("px", "");
 	if (scrollTop > navEvent) {
-		$('#main-navigation').addClass('light-blue darken-1').removeClass('transparent').css("box-shadow", "0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)");
+		$('#main-navigation').addClass('primary-color').removeClass('transparent').css("box-shadow", "0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)");
 	} else {
-		$('#main-navigation').addClass('transparent').removeClass('light-blue darken-1').css("box-shadow", "none");
+		$('#main-navigation').addClass('transparent').removeClass('primary-color').css("box-shadow", "none");
 	}
 }
 
@@ -86,19 +86,33 @@ function navAnimation() {
 /*---------------------------------------
 Header Search Animations
 -----------------------------------*/
-
-$( "#search-loupe" ).click(function() {
-  $("label").slideToggle();
-	$("#search-close").slideToggle();
+$('#icon-search').click(function() {
+  $("#the-search-form").show('slide', { direction: 'right', easing: 'easeInOutQuart'}, 400);
+	$('#icon-search').hide();
+	$('#icon-close').show();
+});
+$('#icon-close').click(function() {
+	$("#the-search-form").hide('slide', { direction: 'right', easing: 'easeInOutQuart'}, 400);
+	$('#icon-search').show();
+	$('#icon-close').hide();
 });
 
-$( "#search-close" ).click(function() {
-  $("label").slideToggle();
-	$("#search-close").slideToggle();
+
+
+/*----------------------------------------------
+Menu Active Item Styling and Opening
+-----------------------------------------------*/
+$(document).ready(function() {
+   sideNavCurrentItem();
 });
 
+function sideNavCurrentItem() {
+	var currenturl = window.location.href;
+	$("#primary-menu a").each(function () {
+		var href = $(this).attr('href');
+		if (currenturl === href) {
+			$(this).closest('.sub-menu').slideDown(200);
+		}
+	})
+}
 
-
-/*-------------------------------------
-Ripple effect
-------------------------------------------*/
