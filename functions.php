@@ -190,14 +190,13 @@ function remove_thumbnail_dimensions( $html ) {
 
 
 /*----------------------------
-Theme Settings Panel
+Theme Settings config
 -----------------------------*/
-
 function theme_settings_page()
 {
     ?>
 	    <div class="wrap">
-	    <h1>Theme Panel</h1>
+	    <h1>Theme Config</h1>
 	    <form method="post" action="options.php">
 	        <?php
 	            settings_fields("section");
@@ -211,7 +210,7 @@ function theme_settings_page()
 
 function add_theme_menu_item()
 {
-	add_menu_page("Theme Panel", "Theme Panel", "manage_options", "theme-panel", "theme_settings_page", null, 99);
+	add_menu_page("Theme Config", "Theme Config", "manage_options", "theme-config", "theme_settings_page", null, 99);
 }
 
 add_action("admin_menu", "add_theme_menu_item");
@@ -279,187 +278,193 @@ function display_divider_color_element()
     <?php
 }
 
-function display_theme_panel_fields()
+function display_theme_config_fields()
 {
-	add_settings_section("section", "All Settings", null, "theme-options");
-	
+	add_settings_section("section", "Color Options", null, "theme-options");
 	add_settings_field("help", "Material Color Palette", "display_help_element", "theme-options", "section");
-	
 	add_settings_field("primary_color", "Primary Color", "display_primary_color_element", "theme-options", "section");
-	
 	add_settings_field("dark_primary_color", "Dark Primary Color", "display_dark_primary_color_element", "theme-options", "section");
-	
 	add_settings_field("light_primary_color", "Light Primary Color", "display_light_primary_color_element", "theme-options", "section");
-	
 	add_settings_field("icon_color", "Icons Color", "display_icon_color_element", "theme-options", "section");
-	
 	add_settings_field("accent_color", "Accent Color", "display_accent_color_element", "theme-options", "section");
-	
 	add_settings_field("primary_text", "Primary Text", "display_primary_text_element", "theme-options", "section");
-	
 	add_settings_field("secondary_text", "Secondary Text", "display_secondary_text_element", "theme-options", "section");
-	
 	add_settings_field("divider_color", "Divider Color", "display_divider_color_element", "theme-options", "section");
-  
   register_setting("section", "primary_color");
-	
 	register_setting("section", "dark_primary_color");
-	
 	register_setting("section", "light_primary_color");
-	
 	register_setting("section", "icon_color");
-	
 	register_setting("section", "accent_color");
-	
 	register_setting("section", "primary_text");
-	
 	register_setting("section", "secondary_text");
-	
 	register_setting("section", "divider_color");
-	
 }
 
-add_action("admin_init", "display_theme_panel_fields");
+add_action("admin_init", "display_theme_config_fields");
 
 add_action('wp_head','material_styling');
 
 function material_styling() { 
 	$primary_color = get_option('primary_color');
+	if (empty($primary_color)) {
+		$primary_color = "#2196F3";
+	}
 	$dark_primary_color = get_option('dark_primary_color');
+	if (empty($dark_primary_color)) {
+		$dark_primary_color = "#1976D2";
+	}
 	$light_primary_color = get_option('light_primary_color');
+  if (empty($light_primary_color)) {
+		$light_primary_color = "#BBDEFB";
+	}
 	$icon_color = get_option('icon_color');
+	if (empty($icon_color)) {
+		$icon_color = "#FFFFFF";
+	}
 	$accent_color = get_option('accent_color');
+  if (empty($accent_color)) {
+		$accent_color = "#FF5722";
+	}
 	$primary_text = get_option('primary_text');
+	if (empty($primary_text)) {
+		$primary_text = "#212121";
+	}
 	$secondary_text = get_option('secondary_text');
-	$divider_color = get_option('divider_color'); ?>
-<style type="text/css">
-html {
-	color: <?php echo $primary_text; ?>;
-}
-header {
-	background-color:<?php echo $primary_color; ?>;
-}
-.primary-color {
+	if (empty($secondary_text)) {
+		$secondary_text = "#727272";
+	}
+	$divider_color = get_option('divider_color');
+	if (empty($divider_color)) {
+		$divider_color = "#B6B6B6";
+	} ?>
+	<style type="text/css">
+		html {
+		color: <?php echo $primary_text; ?>;
+		}
+		header {
+		background-color:<?php echo $primary_color; ?>;
+		}
+		.primary-color {
 		background-color:<?php echo $primary_color; ?>!important;
-}
-.dark-primary-color {
-	background-color:<?php echo $dark_primary_color; ?>!important;
-}
-.header-title {
-	color:<?php echo $icon_color; ?>;
-}
-label {
-	color: <?php echo $secondary_text; ?>;
-}
-hr {
-	color: <?php echo $divider_color; ?>;
-	background-color: <?php echo $divider_color; ?>;
-}
-a {
-	color: <?php echo $accent_color; ?>;
-}
-a:hover {
-	color: <?php echo $accent_color; ?>;
-}
-h1,h2,h3,h4,h5,h6 {
-	color: <?php echo $primary_color; ?>;
-}
-.btn:hover,
-.btn-large:hover {
-	color: <?php echo $icon_color; ?>;
-}
-#the-search-form input[type=search] {
-	border-bottom: 1px solid <?php echo $icon_color; ?>;
-	color: <?php echo $icon_color; ?>;
-}
-#the-search-form  input[type=search]:focus {
-	border-bottom: 1px solid <?php echo $icon_color; ?>;
-	box-shadow: 0 1px 0 0 <?php echo $icon_color; ?>;
-}
-blockquote {
-	border-left: 5px solid <?php echo $accent_color; ?>;
-}
-.hentry {
-	border-bottom: 1px solid <?php echo $divider_color; ?>;
-}
-.widget-title {
-	color: <?php echo $secondary_text; ?>;
-}
-.widget {
-	border-bottom: 1px solid <?php echo $divider_color; ?>;
-}
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	color: <?php echo $icon_color; ?>;
-	background-color: <?php echo $accent_color; ?>;
-}
+		}
+		.dark-primary-color {
+		background-color:<?php echo $dark_primary_color; ?>!important;
+		}
+		.header-title {
+		color:<?php echo $icon_color; ?>;
+		}
+		label {
+		color: <?php echo $secondary_text; ?>;
+		}
+		hr {
+		color: <?php echo $divider_color; ?>;
+		background-color: <?php echo $divider_color; ?>;
+		}
+		a {
+		color: <?php echo $accent_color; ?>;
+		}
+		a:hover {
+		color: <?php echo $accent_color; ?>;
+		}
+		h1,h2,h3,h4,h5,h6 {
+		color: <?php echo $primary_color; ?>;
+		}
+		.btn:hover,
+		.btn-large:hover {
+		color: <?php echo $icon_color; ?>;
+		}
+		#the-search-form input[type=search] {
+		border-bottom: 1px solid <?php echo $icon_color; ?>;
+		color: <?php echo $icon_color; ?>;
+		}
+		#the-search-form  input[type=search]:focus {
+		border-bottom: 1px solid <?php echo $icon_color; ?>;
+		box-shadow: 0 1px 0 0 <?php echo $icon_color; ?>;
+		}
+		blockquote {
+		border-left: 5px solid <?php echo $accent_color; ?>;
+		}
+		.hentry {
+		border-bottom: 1px solid <?php echo $divider_color; ?>;
+		}
+		.widget-title {
+		color: <?php echo $secondary_text; ?>;
+		}
+		.widget {
+		border-bottom: 1px solid <?php echo $divider_color; ?>;
+		}
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"] {
+		color: <?php echo $icon_color; ?>;
+		background-color: <?php echo $accent_color; ?>;
+		}
 
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-	background-color: <?php echo $accent_color; ?>;
-}
+		input[type="button"]:hover,
+		input[type="reset"]:hover,
+		input[type="submit"]:hover {
+		background-color: <?php echo $accent_color; ?>;
+		}
 
-input:not([type]):focus:not([readonly]),
-input[type=text]:focus:not([readonly]),
-input[type=password]:focus:not([readonly]),
-input[type=email]:focus:not([readonly]),
-input[type=url]:focus:not([readonly]),
-input[type=time]:focus:not([readonly]),
-input[type=date]:focus:not([readonly]),
-input[type=datetime]:focus:not([readonly]),
-input[type=datetime-local]:focus:not([readonly]),
-input[type=tel]:focus:not([readonly]),
-input[type=number]:focus:not([readonly]),
-input[type=search]:focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]) {
-	border-bottom: 1px solid <?php echo $accent_color; ?>;
-	box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
-}
-.full-img-btn {
-	background-color:<?php echo $secondary_text; ?>;
-	color:<?php echo $icon_color; ?>;
-}
-.full-img-btn:hover {
-	background-color:<?php echo $secondary_text; ?>;
-	color:<?php echo $icon_color; ?>;
-}
-textarea {
-	border-bottom: 1px solid <?php echo $divider_color; ?>;
-}
-textarea:focus {
-	border-bottom: 1px solid <?php echo $accent_color; ?>;
-	box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
-}
-.menu-header {
-	border-bottom: 1px solid <?php echo $secondary_text; ?>;
-	color:<?php echo $secondary_text; ?>;
-}
-#footer-menu li a,
-#footer-menu ul li a
-	{
-	color: <?php echo $icon_color; ?>;
-}
-nav .brand-logo:hover {
-	color: <?php echo $icon_color; ?>;
-}
-nav a.button-collapse:hover {
-	color: <?php echo $icon_color; ?>;
-}
-.side-nav a,
-.side-nav a:hover {
-	color:<?php echo $primary_text; ?>;
-}
-.sub-menu li {
-	background-color:<?php echo $icon_color; ?>;
-}
-.sub-menu .current-menu-item {
-	background-color:<?php echo $accent_color; ?>;
-}
+		input:not([type]):focus:not([readonly]),
+		input[type=text]:focus:not([readonly]),
+		input[type=password]:focus:not([readonly]),
+		input[type=email]:focus:not([readonly]),
+		input[type=url]:focus:not([readonly]),
+		input[type=time]:focus:not([readonly]),
+		input[type=date]:focus:not([readonly]),
+		input[type=datetime]:focus:not([readonly]),
+		input[type=datetime-local]:focus:not([readonly]),
+		input[type=tel]:focus:not([readonly]),
+		input[type=number]:focus:not([readonly]),
+		input[type=search]:focus:not([readonly]),
+		textarea.materialize-textarea:focus:not([readonly]) {
+		border-bottom: 1px solid <?php echo $accent_color; ?>;
+		box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
+		}
+		.full-img-btn {
+		background-color:<?php echo $secondary_text; ?>;
+		color:<?php echo $icon_color; ?>;
+		}
+		.full-img-btn:hover {
+		background-color:<?php echo $secondary_text; ?>;
+		color:<?php echo $icon_color; ?>;
+		}
+		textarea {
+		border-bottom: 1px solid <?php echo $divider_color; ?>;
+		}
+		textarea:focus {
+		border-bottom: 1px solid <?php echo $accent_color; ?>;
+		box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
+		}
+		.menu-header {
+		border-bottom: 1px solid <?php echo $secondary_text; ?>;
+		color:<?php echo $secondary_text; ?>;
+		}
+		#footer-menu li a,
+		#footer-menu ul li a
+		{
+		color: <?php echo $icon_color; ?>;
+		}
+		nav .brand-logo:hover {
+		color: <?php echo $icon_color; ?>;
+		}
+		nav a.button-collapse:hover {
+		color: <?php echo $icon_color; ?>;
+		}
+		.side-nav a,
+		.side-nav a:hover {
+		color:<?php echo $primary_text; ?>;
+		}
+		.sub-menu li {
+		background-color:<?php echo $icon_color; ?>;
+		}
+		.sub-menu .current-menu-item {
+		background-color:<?php echo $accent_color; ?>;
+		}
 
-.sub-menu .current-menu-item a {
-	color:<?php echo $icon_color; ?>!important;
-}
-</style>
-<?php } ?>
+		.sub-menu .current-menu-item a {
+		color:<?php echo $icon_color; ?>!important;
+		}
+	</style>
+<?php }
