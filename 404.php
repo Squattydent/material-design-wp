@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div class="container">
+	<div class="container main-content">
 		<div class="row">
 			<div class="col s12 m8 l9">
 				<h3><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'materializecss-theme' ); ?></h3>

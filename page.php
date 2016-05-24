@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-<div class="container page-container">
+<div class="container main-content">
 	<div class="row">
 		<div class="col s12">
 		<?php

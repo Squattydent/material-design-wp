@@ -37,6 +37,20 @@
 		</div>
 	</footer>
 
+	<!-- Share Modal -->
+	<div id="share-modal" class="modal">
+		<div class="modal-content">
+			<a href="#!" class=" modal-action modal-close btn-flat right"><i class="material-icons">close</i></a>
+			<h4>Share</h4>
+			<ul>
+				<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" target="_blank"><i class="fa fa-facebook" id="fb-share-icon" aria-hidden="true"></i>Facebook</a></li>
+				<li><a href="https://twitter.com/intent/tweet?text=<?php headerTitle();?> <?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" target="_blank"><i class="fa fa-twitter" id="twitter-share-icon" aria-hidden="true"></i>Twitter</a></li>
+				<li><a href="https://plus.google.com/share?url=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" target="_blank"><i class="fa fa-google-plus" id="gplus-share-icon" aria-hidden="true"></i>Google Plus</a></li>
+				<li><a href="mailto:?subject=<?php headerTitle();?>&body=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" target="_blank"><i class="fa fa-envelope-o" id="email-share-icon" aria-hidden="true"></i>Email</a></li>
+			</ul>
+		</div>
+	</div>
+
 	<?php wp_footer(); ?>
 	<!--Import jQuery before materialize.js-->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

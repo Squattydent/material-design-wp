@@ -319,7 +319,7 @@ function material_styling() {
 	}
 	$icon_color = get_option('icon_color');
 	if (empty($icon_color)) {
-		$icon_color = "#FFFFFF";
+		$icon_color = "#FF5722";
 	}
 	$accent_color = get_option('accent_color');
   if (empty($accent_color)) {
@@ -351,7 +351,7 @@ function material_styling() {
 		background-color:<?php echo $dark_primary_color; ?>!important;
 		}
 		.header-title {
-		color:<?php echo $icon_color; ?>;
+		color:#fff;
 		}
 		label {
 		color: <?php echo $secondary_text; ?>;
@@ -375,7 +375,7 @@ function material_styling() {
 		}
 		#the-search-form input[type=search] {
 		border-bottom: 1px solid <?php echo $icon_color; ?>;
-		color: <?php echo $icon_color; ?>;
+		color: #fff;
 		}
 		#the-search-form  input[type=search]:focus {
 		border-bottom: 1px solid <?php echo $icon_color; ?>;
@@ -384,20 +384,17 @@ function material_styling() {
 		blockquote {
 		border-left: 5px solid <?php echo $accent_color; ?>;
 		}
-		.hentry {
-		border-bottom: 1px solid <?php echo $divider_color; ?>;
-		}
 		.widget-title {
 		color: <?php echo $secondary_text; ?>;
 		}
 		.widget {
-		border-bottom: 1px solid <?php echo $divider_color; ?>;
+		border-bottom: 0px solid <?php echo $divider_color; ?>;
 		}
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-		color: <?php echo $icon_color; ?>;
-		background-color: <?php echo $accent_color; ?>;
+		color: #fff;
+		background-color: <?php echo $icon_color; ?>;
 		}
 
 		input[type="button"]:hover,
@@ -424,11 +421,11 @@ function material_styling() {
 		}
 		.full-img-btn {
 		background-color:<?php echo $secondary_text; ?>;
-		color:<?php echo $icon_color; ?>;
+		color:#fff;
 		}
 		.full-img-btn:hover {
 		background-color:<?php echo $secondary_text; ?>;
-		color:<?php echo $icon_color; ?>;
+		color:#fff;
 		}
 		textarea {
 		border-bottom: 1px solid <?php echo $divider_color; ?>;
@@ -447,24 +444,63 @@ function material_styling() {
 		color: <?php echo $icon_color; ?>;
 		}
 		nav .brand-logo:hover {
-		color: <?php echo $icon_color; ?>;
+		color: #fff;
 		}
 		nav a.button-collapse:hover {
-		color: <?php echo $icon_color; ?>;
+		color: #fff;
 		}
 		.side-nav a,
 		.side-nav a:hover {
 		color:<?php echo $primary_text; ?>;
 		}
 		.sub-menu li {
-		background-color:<?php echo $icon_color; ?>;
+		background-color:#fff;
 		}
 		.sub-menu .current-menu-item {
-		background-color:<?php echo $accent_color; ?>;
+		background-color:<?php echo $primary_color; ?>;
 		}
-
 		.sub-menu .current-menu-item a {
-		color:<?php echo $icon_color; ?>!important;
+		color:#fff!important;
+		}
+		#icon-search, #icon-close {
+			color:#fff;
+		}
+		#search-btn, #close-btn, #btn-share {
+			background-color:<?php echo $icon_color; ?>;
+		}
+		#share-modal a, #share-modal h4 {
+			color:<?php echo $secondary_text; ?>;
+		}
+		#share-modal a:hover {
+			color:<?php echo $primary_text; ?>;
+		}
+		.adjacent-post {
+			background-color:<?php echo $primary_color; ?>;
+		}
+		.related-post-title{
+			color:<?php echo $secondary_text; ?>;
 		}
 	</style>
 <?php }
+
+// functions.php
+
+    // =========================================================================
+    // REMOVE JUNK FROM HEAD
+    // =========================================================================
+    remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
+    remove_action('wp_head', 'wp_generator'); // remove wordpress version
+
+    remove_action('wp_head', 'feed_links', 2); // remove rss feed links (make sure you add them in yourself if youre using feedblitz or an rss service)
+    remove_action('wp_head', 'feed_links_extra', 3); // removes all extra rss feed links
+
+    remove_action('wp_head', 'index_rel_link'); // remove link to index page
+    remove_action('wp_head', 'wlwmanifest_link'); // remove wlwmanifest.xml (needed to support windows live writer)
+
+    remove_action('wp_head', 'start_post_rel_link', 10, 0); // remove random post link
+    remove_action('wp_head', 'parent_post_rel_link', 10, 0); // remove parent post link
+    remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // remove the next and previous post links
+    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+
+    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+    

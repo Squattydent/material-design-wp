@@ -14,6 +14,8 @@ $(document).ready(function() {
 	});
 	/* Image Captions & Materialbox */
 	$('.materialboxed').materialbox();
+	/* Modal Init */
+	$('.modal-trigger').leanModal();
 });
 
 
@@ -77,8 +79,10 @@ function navAnimation() {
 	var navEvent = $('header').css("height").replace("px", "") - $('#main-navigation').css("height").replace("px", "");
 	if (scrollTop > navEvent) {
 		$('#main-navigation').addClass('primary-color').removeClass('transparent').css("box-shadow", "0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)");
+		$('#btn-share').hide();
 	} else {
 		$('#main-navigation').addClass('transparent').removeClass('primary-color').css("box-shadow", "none");
+		$('#btn-share').show();
 	}
 }
 

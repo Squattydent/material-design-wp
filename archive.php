@@ -8,14 +8,18 @@
  */
 
 get_header(); ?>
-	<div class="container">
+	<div class="container main-content">
 		<div class="row">
-			<div class="col s12 m8 l9">
+			<div class="col s12 m8 l9" id="archive-container">
 				<?php
 		if ( have_posts() ) : ?>
-					<p>	<?php the_archive_description(); ?></p>
-					<?php
-			/* Start the Loop */
+		<?php if (!empty(the_archive_description())) { ?>
+			<div class="row">
+				<div class="col s12" id="archive-description-container">
+						<p><?php the_archive_description(); ?></p>
+				</div>
+			</div>
+		<?php } /* Start the Loop */
 			while ( have_posts() ) : the_post();
 				get_template_part( 'template-parts/content', get_post_format() );
 			endwhile;
@@ -24,7 +28,7 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', 'none' );
 		endif; ?>
 			</div>
-			<div class="col s12 m4 l3">
+			<div class="col s12 m4 l3" id="sidebar-container">
 				<?php get_sidebar(); ?>
 			</div>
 		</div>

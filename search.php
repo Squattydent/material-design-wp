@@ -8,9 +8,9 @@
  */
 
 get_header(); ?>
-	<div class="container">
+	<div class="container main-content">
 		<div class="row">
-			<div class="col s12 m8 l9">
+			<div class="col s12 m8 l9" id="search-container">
 				<?php
 					if ( have_posts() ) : ?>
 					<?php

@@ -25,9 +25,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- JQuery Ui Min css  -->
 		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/css/jquery-ui.min.css">
+		<!-- Font Awesome Min CSS  -->
+		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/css/font-awesome.min.css">
 		</script>
 		<?php wp_head(); ?>
 	</head>
+
 	<body <?php body_class(); ?>>
 		<script>
 			(function(i, s, o, g, r, a, m) {
@@ -57,7 +60,9 @@
 								<a href="#" data-activates="primary-menu" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
 								<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'side-nav', 'items_wrap' => '<ul id="%1$s" class="%2$s"><li class="menu-header"><p>Material WP</p></li>%3$s</ul>', ) ); ?>
 								<ul class="right" id="header-search">
-									<li class="the-search-form" id="the-search-form"><?php echo get_search_form(); ?></li>
+									<li class="the-search-form" id="the-search-form">
+										<?php echo get_search_form(); ?>
+									</li>
 									<li><i id="icon-search" class="material-icons" style="cursor:pointer">search</i><i id="icon-close" class="material-icons" style="cursor:pointer">close</i></li>
 								</ul>
 							</div>
@@ -72,6 +77,6 @@
 					</div>
 				</div>
 			</header>
- 
- 
-			
+			<div class="container">
+				<a href="#share-modal" class="btn-share btn-floating btn-large waves-effect waves-light modal-trigger right" id="btn-share"><i class="material-icons">share</i></a>
+			</div>
