@@ -452,13 +452,15 @@ nav a.button-collapse:hover {
 # Menu Header
 --------------------------------------------------------------*/
 
-.menu-header {
-	height: 60px;
-	padding: 0px 0 0 20px;
+.menu-header a {
+	margin:10px 0;
+	padding:10px 0;
 	font-size: 1.5rem;
 }
 
-
+.menu-header a:hover {
+	background-color:transparent;
+}
 /*-------------------------------------------------------------
 # Share Modal
 --------------------------------------------------------------*/
@@ -664,15 +666,10 @@ Footer
 .footer-social-container i {
 	transition: all .5s ease-in-out;
 	padding: 5px 10px;
-	;
-	border-radius: 2px;
 }
 
 .footer-social-container i:hover {
-	background-color: #fff;
-	color: #2196F3;
-	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
-	/* transform: rotate(360deg); */
+	transform: rotate(360deg);
 }
 
 .footer-social-container a:hover {

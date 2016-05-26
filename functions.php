@@ -419,7 +419,13 @@ function material_styling() {
 		}
 		.menu-header {
 		border-bottom: 1px solid <?php echo $divider_color; ?>;
-		color: <?php echo $secondary_text; ?>;
+		}
+		.menu-header a,
+		.menu-header a:hover {
+			color: <?php echo $secondary_text; ?>!important;
+		}
+		{
+			color: <?php echo $secondary_text; ?>;
 		}
 		header {
 		background-color:<?php echo $primary_color; ?>;
