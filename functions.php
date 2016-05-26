@@ -215,7 +215,7 @@ function add_theme_menu_item()
 
 add_action("admin_menu", "add_theme_menu_item");
 
-function display_help_element()
+function display_color_help_element()
 {
 	?>
     	<p>Create your default Material Palette to give a nice look to your blog. To help you understand the roles of colors on Material Design, report to <a href="http://www.materialpalette.com/" target="_blank">Material Palette</a>.</p>
@@ -278,10 +278,70 @@ function display_divider_color_element()
     <?php
 }
 
+function display_social_help_element()
+{
+	?>
+    	<p>Display links to your social pages in the footer of the Website.</p>
+    <?php
+}
+
+function display_facebook_url_element()
+{
+	?>
+    	<input type="text" name="facebook_url" id="facebook_url" value="<?php echo get_option('facebook_url'); ?>" style="width:100%;"/>
+    <?php
+}
+
+function display_gplus_url_element()
+{
+	?>
+    	<input type="text" name="gplus_url" id="gplus_url" value="<?php echo get_option('gplus_url'); ?>" style="width:100%;"/>
+    <?php
+}
+
+function display_instagram_url_element()
+{
+	?>
+    	<input type="text" name="instagram_url" id="instagram_url" value="<?php echo get_option('instagram_url'); ?>" style="width:100%;"/>
+    <?php
+}
+
+function display_twitter_url_element()
+{
+	?>
+    	<input type="text" name="twitter_url" id="twitter_url" value="<?php echo get_option('twitter_url'); ?>" style="width:100%;"/>
+    <?php
+}
+
+function display_github_url_element()
+{
+	?>
+    	<input type="text" name="github_url" id="github_url" value="<?php echo get_option('github_url'); ?>" style="width:100%;"/>
+    <?php
+}
+
+function display_pinterest_url_element()
+{
+	?>
+    	<input type="text" name="pinterest_url" id="pinterest_url" value="<?php echo get_option('pinterest_url'); ?>" style="width:100%;"/>
+    <?php
+}
+
+function display_email_address_element()
+{
+	?>
+    	<input type="email" name="email_address" id="email_address" value="<?php echo get_option('email_address'); ?>" style="width:100%;"/>
+    <?php
+}
+
+
+
+
 function display_theme_config_fields()
 {
+	/*- Colors -*/
 	add_settings_section("section", "Color Options", null, "theme-options");
-	add_settings_field("help", "Material Color Palette", "display_help_element", "theme-options", "section");
+	add_settings_field("color_help", "Material Color Palette", "display_color_help_element", "theme-options", "section");
 	add_settings_field("primary_color", "Primary Color", "display_primary_color_element", "theme-options", "section");
 	add_settings_field("dark_primary_color", "Dark Primary Color", "display_dark_primary_color_element", "theme-options", "section");
 	add_settings_field("light_primary_color", "Light Primary Color", "display_light_primary_color_element", "theme-options", "section");
@@ -290,7 +350,7 @@ function display_theme_config_fields()
 	add_settings_field("primary_text", "Primary Text", "display_primary_text_element", "theme-options", "section");
 	add_settings_field("secondary_text", "Secondary Text", "display_secondary_text_element", "theme-options", "section");
 	add_settings_field("divider_color", "Divider Color", "display_divider_color_element", "theme-options", "section");
-  register_setting("section", "primary_color");
+	register_setting("section", "primary_color");
 	register_setting("section", "dark_primary_color");
 	register_setting("section", "light_primary_color");
 	register_setting("section", "icon_color");
@@ -298,6 +358,22 @@ function display_theme_config_fields()
 	register_setting("section", "primary_text");
 	register_setting("section", "secondary_text");
 	register_setting("section", "divider_color");
+	/*- Social -*/
+	add_settings_field("social_help", "Social Configuration", "display_social_help_element", "theme-options", "section");
+	add_settings_field("facebook_url", "Facebook", "display_facebook_url_element", "theme-options", "section");
+	add_settings_field("gplus_url", "Google Plus", "display_gplus_url_element", "theme-options", "section");
+	add_settings_field("twitter_url", "Twitter", "display_twitter_url_element", "theme-options", "section");
+	add_settings_field("instagram_url", "Instagram", "display_instagram_url_element", "theme-options", "section");
+	add_settings_field("pinterest_url", "Pinterest", "display_pinterest_url_element", "theme-options", "section");
+	add_settings_field("github_url", "Github", "display_github_url_element", "theme-options", "section");
+	add_settings_field("email_address", "Email Address", "display_email_address_element", "theme-options", "section");
+	register_setting("section", "facebook_url");
+	register_setting("section", "gplus_url");
+  register_setting("section", "twitter_url");
+	register_setting("section", "instagram_url");
+	register_setting("section", "pinterest_url");
+	register_setting("section", "github_url");
+	register_setting("section", "email_address");
 }
 
 add_action("admin_init", "display_theme_config_fields");
@@ -335,11 +411,15 @@ function material_styling() {
 	}
 	$divider_color = get_option('divider_color');
 	if (empty($divider_color)) {
-		$divider_color = "#B6B6B6";
+		$divider_color = "#e0e0e0";
 	} ?>
 	<style type="text/css">
 		html {
 		color: <?php echo $primary_text; ?>;
+		}
+		.menu-header {
+		border-bottom: 1px solid <?php echo $divider_color; ?>;
+		color: <?php echo $secondary_text; ?>;
 		}
 		header {
 		background-color:<?php echo $primary_color; ?>;
@@ -349,9 +429,6 @@ function material_styling() {
 		}
 		.dark-primary-color {
 		background-color:<?php echo $dark_primary_color; ?>!important;
-		}
-		.header-title {
-		color:#fff;
 		}
 		label {
 		color: <?php echo $secondary_text; ?>;
@@ -373,14 +450,6 @@ function material_styling() {
 		.btn-large:hover {
 		color: <?php echo $icon_color; ?>;
 		}
-		#the-search-form input[type=search] {
-		border-bottom: 1px solid <?php echo $icon_color; ?>;
-		color: #fff;
-		}
-		#the-search-form  input[type=search]:focus {
-		border-bottom: 1px solid <?php echo $icon_color; ?>;
-		box-shadow: 0 1px 0 0 <?php echo $icon_color; ?>;
-		}
 		blockquote {
 		border-left: 5px solid <?php echo $accent_color; ?>;
 		}
@@ -393,14 +462,28 @@ function material_styling() {
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-		color: #fff;
 		background-color: <?php echo $icon_color; ?>;
 		}
 
 		input[type="button"]:hover,
 		input[type="reset"]:hover,
 		input[type="submit"]:hover {
-		background-color: <?php echo $accent_color; ?>;
+		background-color: <?php echo $icon_color; ?>;
+		}
+		
+		input:not([type]),
+		input[type=text],
+		input[type=password],
+		input[type=email],
+		input[type=url],
+		input[type=time],
+		input[type=date],
+		input[type=datetime],
+		input[type=datetime-local],
+		input[type=tel],
+		input[type=number],
+		input[type=search] {
+			border-bottom: 1px solid <?php echo $divider_color; ?>;
 		}
 
 		input:not([type]):focus:not([readonly]),
@@ -419,14 +502,6 @@ function material_styling() {
 		border-bottom: 1px solid <?php echo $accent_color; ?>;
 		box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
 		}
-		.full-img-btn {
-		background-color:<?php echo $secondary_text; ?>;
-		color:#fff;
-		}
-		.full-img-btn:hover {
-		background-color:<?php echo $secondary_text; ?>;
-		color:#fff;
-		}
 		textarea {
 		border-bottom: 1px solid <?php echo $divider_color; ?>;
 		}
@@ -434,36 +509,17 @@ function material_styling() {
 		border-bottom: 1px solid <?php echo $accent_color; ?>;
 		box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
 		}
-		.menu-header {
-		border-bottom: 1px solid <?php echo $secondary_text; ?>;
-		color:<?php echo $secondary_text; ?>;
-		}
 		#footer-menu li a,
 		#footer-menu ul li a
 		{
 		color: <?php echo $icon_color; ?>;
 		}
-		nav .brand-logo:hover {
-		color: #fff;
-		}
-		nav a.button-collapse:hover {
-		color: #fff;
-		}
 		.side-nav a,
 		.side-nav a:hover {
 		color:<?php echo $primary_text; ?>;
 		}
-		.sub-menu li {
-		background-color:#fff;
-		}
-		.sub-menu .current-menu-item {
-		background-color:<?php echo $primary_color; ?>;
-		}
 		.sub-menu .current-menu-item a {
-		color:#fff!important;
-		}
-		#icon-search, #icon-close {
-			color:#fff;
+		color: <?php echo $primary_color; ?>;
 		}
 		#search-btn, #close-btn, #btn-share {
 			background-color:<?php echo $icon_color; ?>;
@@ -479,6 +535,9 @@ function material_styling() {
 		}
 		.related-post-title{
 			color:<?php echo $secondary_text; ?>;
+		}
+		.widget_nav_menu .sub-menu .current-menu-item a {
+				color: <?php echo $accent_color; ?>!important;
 		}
 	</style>
 <?php }

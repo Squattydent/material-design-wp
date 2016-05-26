@@ -52,11 +52,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 
 #single-content-container,
+#page-container,
 #list-post-container,
 #single-entry-meta-container,
 #single-comments-container,
 #list-search-container,
+#error-container,
+#none-container,
 .widget {
+	padding: 20px;
 	background-color: #fff;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
 }
@@ -65,6 +69,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 #archive-container,
 #search-container,
 #single-entry-meta-container,
+#error-container,
 #single-related-posts-container {
 	margin-top: 10px;
 }
@@ -157,6 +162,10 @@ article img {
 	}
 }
 
+h2 {
+	margin: 1rem 0;
+}
+
 
 /*--------------------------------------------------------------
 Header Search Form
@@ -168,18 +177,33 @@ Header Search Form
 
 #the-search-form input[type=search] {
 	box-shadow: none;
+	border-bottom: 1px solid #FFF;
+	color: #fff;
+}
+
+#the-search-form input[type=search]:focus {
+	border-bottom: 1px solid #fff;
+	box-shadow: 0 1px 0 0 #fff;
 }
 
 .the-search-form {
 	display: none;
+	width: 400px;
+}
+
+@media only screen and (max-width: 600px) {
+.the-search-form {
+	width: 200px;
+}
 }
 
 #icon-close {
 	display: none;
 }
 
-.post-featured-img {
-	margin-top: 20px;
+#icon-search,
+#icon-close {
+	color: #fff;
 }
 
 
@@ -218,21 +242,13 @@ Page content
 # Adjacent post
 --------------------------------------------------------------*/
 
-.single .entry-meta {
-	padding: 40px 0;
-}
-
 .adjacent-post {
 	height: 200px;
 	padding: 20px!important;
 	transition: all .2s ease-out;
-	margin-top:5px;
+	margin-top: 5px;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
-}
-
-.adjacent-post:hover {
-	-webkit-filter: brightness(104%);
-	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+	cursor: default;
 }
 
 .adjacent-post a {
@@ -241,7 +257,13 @@ Page content
 }
 
 .adjacent-post p {
+	font-size: 15px;
 	color: #fff;
+}
+
+.adjacent-post:hover {
+	-webkit-filter: brightness(104%);
+	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .adjacent-post a:hover {
@@ -260,6 +282,8 @@ Page content
 		margin-left: 5px;
 	}
 }
+
+
 /*--------------------------------------------------------------
 Category pages
 ---------------------------------------------------------------*/
@@ -271,22 +295,15 @@ Category pages
 	padding-bottom: 0px;
 }
 
-#list-post-container,
-#list-search-container
-{
-	transition: all .2s ease-out;
-}
-
-#list-post-container:hover,
-#list-search-container:hover {
-	-webkit-filter: brightness(103%);
-	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-}
-
-
 /*-------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
+
+@media only screen and (max-width: 600px) {
+	#sidebar-container {
+		padding: 0;
+	}
+}
 
 .card .card-content .card-title {
 	line-height: 30px;
@@ -303,7 +320,7 @@ Category pages
 
 .widget {
 	margin: 10px 0px 10px 0px;
-	padding: 15px 15px 5px 15px;
+	width: 100%;
 }
 
 aside ul li {
@@ -322,6 +339,7 @@ aside ul {
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
+	color: #fff;
 	text-decoration: none;
 	text-align: center;
 	letter-spacing: .5px;
@@ -341,11 +359,28 @@ input[type="submit"] {
 }
 
 .full-img-btn {
-	box-shadow: none;
+	position: absolute;
+	margin-top: -40px;
+	margin-left: 15px;
+	color:#fff;
 }
 
 .full-img-btn:hover {
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	color:#fff;
+}
+
+.post-featured-img {
+	margin-bottom: 30px;
+}
+
+.full-img-btn i {
+font-size:2rem;
+}
+
+.btn,
+.btn-floating,
+.btn-large {
+	cursor: pointer!important;
 }
 
 
@@ -366,6 +401,7 @@ textarea {
 	box-shadow: none;
 	box-sizing: content-box;
 	resize: vertical;
+	transition: all 0.3s;
 }
 
 input[type="button"]:hover,
@@ -385,11 +421,30 @@ input[type="submit"]:hover {
 
 
 /*-------------------------------------------------------------
-# All Menus
+# Menu
 --------------------------------------------------------------*/
 
 nav ul a:hover {
 	background-color: transparent;
+}
+
+nav .brand-logo:hover {
+	color: #fff;
+}
+
+nav a.button-collapse:hover {
+	color: #fff;
+}
+
+.sub-menu li {
+	background-color: #fff;
+}
+
+.sub-menu .current-menu-item a {
+	font-weight:500;
+}
+.sub-menu .current-menu-item {
+	background-color:#fff!important;
 }
 
 
@@ -492,8 +547,12 @@ nav ul a:hover {
 
 
 /*-------------------------------------------------------------
-# Footer Menu
+# Header
 --------------------------------------------------------------*/
+
+.header-title {
+	color: #fff;
+}
 
 
 /*------------------------------------------------------------
@@ -548,6 +607,74 @@ nav .button-collapse i {
 	background-color: rgba(0, 0, 0, 0.05);
 }
 
+.widget_nav_menu .current-menu-parent,
+.widget_nav_menu .current-menu-item,
+.widget_nav_menu .sub-menu .current-menu-item {
+	background-color: transparent;
+}
+
+.widget_nav_menu .sub-menu li a {
+	padding-left: 15px;
+}
+
+.widget_nav_menu .current-menu-item a {
+	text-decoration: underline;
+}
+
 .sub-menu li a {
 	padding-left: 30px;
+}
+
+
+/*--------------------------------------------------------------
+Waves Effect
+--------------------------------------------------------------*/
+
+.waves-effect {
+	display: inline-block;
+	cursor: default;
+}
+
+#primary-menu .waves-effect,
+.adjacent-post {
+	display: block;
+}
+
+
+/*--------------------------------------------------------------
+Footer
+--------------------------------------------------------------*/
+
+@media only screen and (min-width: 991px) {
+	.footer-social-container {
+		float: right;
+	}
+}
+
+.footer-social-container li {
+	display: inline-block;
+	margin: 0 5px;
+	font-size: 1.5rem;
+}
+
+.footer-social-container a {
+	color: #fff;
+}
+
+.footer-social-container i {
+	transition: all .5s ease-in-out;
+	padding: 5px 10px;
+	;
+	border-radius: 2px;
+}
+
+.footer-social-container i:hover {
+	background-color: #fff;
+	color: #2196F3;
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
+	/* transform: rotate(360deg); */
+}
+
+.footer-social-container a:hover {
+	color: #fff;
 }

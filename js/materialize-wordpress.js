@@ -16,6 +16,8 @@ $(document).ready(function() {
 	$('.materialboxed').materialbox();
 	/* Modal Init */
 	$('.modal-trigger').leanModal();
+	/* Tooltips */
+	$('.tooltipped').tooltip({delay: 50});
 });
 
 
@@ -107,7 +109,8 @@ $('#icon-close').click(function() {
 Menu Active Item Styling and Opening
 -----------------------------------------------*/
 $(document).ready(function() {
-   sideNavCurrentItem();
+  sideNavCurrentItem();
+	widgetNavCurrentItem();
 });
 
 function sideNavCurrentItem() {
@@ -120,3 +123,25 @@ function sideNavCurrentItem() {
 	})
 }
 
+function widgetNavCurrentItem() {
+	var currenturl = window.location.href;
+	$(".widget_nav_menu a").each(function () {
+		var href = $(this).attr('href');
+		if (currenturl === href) {
+			$(this).closest('.sub-menu').show();
+		}
+	})
+}
+
+
+/*----------------------------------------------
+Add Ripple effect to Menu Items
+-----------------------------------------------*/
+
+$(document).ready(function() {
+   addRippleEffect();
+});
+
+function addRippleEffect() {
+	$("#primary-menu .menu-item").addClass("waves-effect");
+}

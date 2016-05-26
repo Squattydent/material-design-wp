@@ -58,7 +58,7 @@
 									<?php headerTitle();?>
 								</a>
 								<a href="#" data-activates="primary-menu" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-								<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'side-nav', 'items_wrap' => '<ul id="%1$s" class="%2$s"><li class="menu-header"><p>Material WP</p></li>%3$s</ul>', ) ); ?>
+								<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'side-nav', 'items_wrap' => '<ul id="%1$s" class="%2$s"><li class="menu-header"><p>'.get_bloginfo('name').'</p></li>%3$s</ul>', ) ); ?>
 								<ul class="right" id="header-search">
 									<li class="the-search-form" id="the-search-form">
 										<?php echo get_search_form(); ?>

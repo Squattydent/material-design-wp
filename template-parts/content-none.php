@@ -9,7 +9,7 @@
 
 ?>
 
-	<section class="no-results not-found">
+	<section class="no-results not-found" id="none-container">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'materializecss-theme' ); ?></h1>
 		<!-- .page-header -->
 		<div class="page-content">

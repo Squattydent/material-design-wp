@@ -15,8 +15,7 @@
 				$thumbnail = get_post( get_post_thumbnail_id() );
 				?>
 				<img class="materialboxed responsive-img" alt="<?php echo get_post_meta( $thumbnail->ID, '_wp_attachment_image_alt', true ); ?>" title="<?php echo $thumbnail->post_title; ?>" data-caption="<?php echo $thumbnail->post_excerpt; ?>" src="<?php the_post_thumbnail_url('large'); ?>">
-		  <br>
-				<a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="waves-effect waves-dark btn full-img-btn">Full Size Image</a>
+		 	  <a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="full-img-btn tooltipped" data-position="right" data-delay="1" data-tooltip="Full Size Image"><i class="material-icons">fullscreen</i></a>
 		  </div>
 		<?php } ?>
 		<div class="content">

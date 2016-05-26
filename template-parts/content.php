@@ -20,8 +20,7 @@
 					<div class="post-featured-img">
 						<?php $thumbnail = get_post( get_post_thumbnail_id() );	?>
 						<img class="materialboxed responsive-img" alt="<?php echo get_post_meta( $thumbnail->ID, '_wp_attachment_image_alt', true ); ?>" title="<?php echo $thumbnail->post_title; ?>" data-caption="<?php echo $thumbnail->post_excerpt; ?>" src="<?php the_post_thumbnail_url('large'); ?>">
-						<br>
-						<a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="waves-effect waves-dark btn full-img-btn">Full Size Image</a>
+						<a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="full-img-btn tooltipped" data-position="right" data-delay="1" data-tooltip="Full Size Image"><i class="material-icons">fullscreen</i></a>
 					</div>
 					<?php } /*-- Post thumbnail  --*/	?>
 					<div class="entry-content">
@@ -54,22 +53,26 @@
 					} 
 					if (!empty( $prev_post )) { ?>
 							<div class="col s12 m12 l<?php echo 12 / $adjacent_posts; ?>" style="padding:0;">
-								<div class="adjacent-post" id="prev-post-container">
+								<div class="adjacent-post waves-effect waves-light" id="prev-post-container">
 									<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><?php echo $prev_post->post_title; ?></a>
-									<p>
-										<?php echo $prev_text; ?>
-									</p>
+									<a href="<?php echo get_permalink( $prev_post->ID ); ?>">
+										<p>
+											<?php echo $prev_text; ?>
+										</p>
+									</a>
 									<a href="<?php echo get_permalink( $prev_post->ID ); ?>" class="left"><i class="material-icons">keyboard_arrow_left</i></a>
 								</div>
 							</div>
 							<?php }
 					    if (!empty( $next_post )) { ?>
 							<div class="col s12 m12 l<?php echo 12 / $adjacent_posts; ?>" style="padding:0;">
-								<div class="adjacent-post" id="next-post-container">
+								<div class="adjacent-post waves-effect waves-light" id="next-post-container">
 									<a href="<?php echo get_permalink( $next_post->ID ); ?>"><?php echo $next_post->post_title; ?></a>
-									<p>
-										<?php echo $next_text; ?>
-									</p>
+									<a href="<?php echo get_permalink( $next_post->ID ); ?>">
+										<p>
+											<?php echo $next_text; ?>
+										</p>
+									</a>
 									<a href="<?php echo get_permalink( $next_post->ID ); ?>" class="right"><i class="material-icons">keyboard_arrow_right</i></a>
 								</div>
 							</div>

@@ -22,8 +22,24 @@
 					</h5>
 					<p class="grey-text text-lighten-4"><?php bloginfo('description'); ?></p>
 				</div>
-				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text"></h5>
+				<div class="col l6 s12 right">
+					<ul class="footer-social-container">
+						<?php if(!empty(get_option('facebook_url'))) { ?>
+						<li class="footer-social-item"><a href="<?php echo get_option('facebook_url'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<?php } if(!empty(get_option('gplus_url'))) { ?>
+						<li class="footer-social-item"><a href="<?php echo get_option('gplus_url'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Google +" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+						<?php } if(!empty(get_option('twitter_url'))) { ?>
+						<li class="footer-social-item"><a href="<?php echo get_option('twitter_url'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<?php } if(!empty(get_option('instagram_url'))) { ?>
+						<li class="footer-social-item"><a href="<?php echo get_option('instagram_url'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<?php } if(!empty(get_option('pinterest_url'))) { ?>
+						<li class="footer-social-item"><a href="<?php echo get_option('pinterest_url'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Pinterest" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+						<?php } if(!empty(get_option('github_url'))) { ?>
+						<li class="footer-social-item"><a href="<?php echo get_option('github_url'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Github" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+						<?php } if(!empty(get_option('email_address'))) { ?>
+						<li class="footer-social-item"><a href="mailto:<?php echo get_option('email_address'); ?>" class="tooltipped" data-position="top" data-delay="50" data-tooltip="e-Mail" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+					  <?php } else {} ?>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -23,7 +23,7 @@ get_header(); ?>
 					get_template_part( 'template-parts/content', 'none' );
 				endif; ?>
 			</div>
-			<div class="col s12 m4 l3">
+			<div class="col s12 m4 l3" id="sidebar-container">
 				<?php get_sidebar(); ?>
 			</div>
 		</div>
