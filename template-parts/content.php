@@ -9,17 +9,18 @@
 
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<div class="row">
-			<?php
+
+		<?php
        if ( is_single() ) { 
 			/*-----------------------------------------------------
 			Single articl content 
 			-----------------------------------------------------*/?>
+			<div class="row">
 				<div class="col s12" id="single-content-container">
 					<?php if ( has_post_thumbnail() ) { ?>
 					<div class="post-featured-img">
 						<?php $thumbnail = get_post( get_post_thumbnail_id() );	?>
-						<img class="materialboxed responsive-img" alt="<?php echo get_post_meta( $thumbnail->ID, '_wp_attachment_image_alt', true ); ?>" title="<?php echo $thumbnail->post_title; ?>" data-caption="<?php echo $thumbnail->post_excerpt; ?>" src="<?php the_post_thumbnail_url('large'); ?>">
+						<img class="materialboxed responsive-img" alt="<?php echo get_post_meta( $thumbnail->ID, '_wp_attachment_image_alt', true ); ?>" title="<?php echo $thumbnail->post_title; ?>" data-caption="<?php echo $thumbnail->post_excerpt; ?>" src="<?php the_post_thumbnail_url('featured-img'); ?>">
 						<a href="<?php the_post_thumbnail_url('full'); ?>" target="_blank" class="full-img-btn tooltipped" data-position="right" data-delay="1" data-tooltip="Full Size Image"><i class="material-icons">fullscreen</i></a>
 					</div>
 					<?php } /*-- Post thumbnail  --*/	?>
@@ -79,21 +80,33 @@
 							<?php } ?>
 					</div>
 				</div>
-				<?php } else /* End of if is single */ { ?>
-				<div class="col s12" id="list-post-container">
-					<h2><a href="<?php echo get_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-					<?php if ( 'post' === get_post_type() ) : ?>
-					<div class="entry-meta">
-						<?php materializecss_theme_posted_on(); ?>
-					</div>
-					<!-- .entry-meta -->
-					<?php	endif; ?>
-						<!-- .entry-header -->
-						<div class="entry-content">
-							<?php the_excerpt(); ?>
-						</div>
-						<!-- .entry-content -->
+			</div>
+			<?php } else /* End of if is single */ { ?>
+			<div id="list-post-container">
+				<div class="list-post-background" <?php 
+					if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+						echo 'style="background-image: url(';
+						the_post_thumbnail_url('archive-list-img');
+						echo ')"';
+					} else { /* -- */ } ?>>
+				<h2><a href="<?php echo get_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 				</div>
-				<?php } ?>
-		</div>
+				<div class="right">
+					<a href="<?php echo get_permalink(); ?>" class="btn-floating btn-large waves-effect waves-light list-link-btn right"><i class="material-icons">link</i></a>
+				</div>
+				<div class="list-post-content">
+				<?php if ( 'post' === get_post_type() ) : ?>
+				<div class="entry-meta">
+					<?php materializecss_theme_posted_on(); ?>
+				</div>
+				<!-- .entry-meta -->
+				<?php	endif; ?>
+				<!-- .entry-header -->
+				<div class="entry-content">
+					<?php the_excerpt(); ?>
+				</div>
+				<!-- .entry-content -->
+				</div>
+			</div>
+			<?php } ?>
 	</article>

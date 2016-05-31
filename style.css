@@ -59,6 +59,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 #list-search-container,
 #error-container,
 #none-container,
+#archive-description-container,
 .widget {
 	padding: 20px;
 	background-color: #fff;
@@ -192,9 +193,9 @@ Header Search Form
 }
 
 @media only screen and (max-width: 600px) {
-.the-search-form {
-	width: 200px;
-}
+	.the-search-form {
+		width: 200px;
+	}
 }
 
 #icon-close {
@@ -295,12 +296,103 @@ Category pages
 	padding-bottom: 0px;
 }
 
+#list-post-container,
+#list-search-container,
+.posts-navigation {
+	transition: all .2s ease-out;
+}
+
+#list-post-container:hover,
+#list-search-container:hover,
+.posts-navigation:hover {
+	-webkit-filter: brightness(103%);
+	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+#list-article-container {
+margin-bottom:20px;
+}
+
+
+.list-post-background {
+	height: 320px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin: -20px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+@media only screen and (max-width: 900px) {
+	.list-post-background {
+		height: 220px;
+	}
+	.list-post-content {
+	min-height: 180px;
+	}
+}
+
+.list-post-background h2 {
+	margin: 0;
+	padding: 30px;
+	position: absolute;
+	bottom: 0;
+}
+
+.list-post-background h2 a {
+	color: #fff;
+}
+
+.list-link-btn {
+	position: absolute;
+	margin:-47px;
+}
+
+
+@media only screen and (min-width: 901px) {
+.list-post-content {
+	min-height: 220px;
+}
+}
+
+.posts-navigation {
+	background-color: #fff;
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
+	margin-top: -20px;
+}
+
+.posts-navigation a {
+	padding:0 20px;
+}
+
+.nav-links {
+	position:relative;
+}
+
+.nav-previous,
+.nav-next {
+	position:absolute;
+}
+
+.nav-next {
+	right:0;
+}
+
+.archive-description-row {
+	padding:0 10px;
+}
+
+
 /*-------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
 
 @media only screen and (max-width: 600px) {
-	#sidebar-container {
+	#sidebar-container,
+	#archive-container,
+	#search-container
+	{
 		padding: 0;
 	}
 }
@@ -362,11 +454,11 @@ input[type="submit"] {
 	position: absolute;
 	margin-top: -40px;
 	margin-left: 15px;
-	color:#fff;
+	color: #fff;
 }
 
 .full-img-btn:hover {
-	color:#fff;
+	color: #fff;
 }
 
 .post-featured-img {
@@ -374,7 +466,7 @@ input[type="submit"] {
 }
 
 .full-img-btn i {
-font-size:2rem;
+	font-size: 2rem;
 }
 
 .btn,
@@ -441,10 +533,11 @@ nav a.button-collapse:hover {
 }
 
 .sub-menu .current-menu-item a {
-	font-weight:500;
+	font-weight: 500;
 }
+
 .sub-menu .current-menu-item {
-	background-color:#fff!important;
+	background-color: #fff!important;
 }
 
 
@@ -453,14 +546,16 @@ nav a.button-collapse:hover {
 --------------------------------------------------------------*/
 
 .menu-header a {
-	margin:10px 0;
-	padding:10px 0;
+	margin: 10px 0;
+	padding: 10px 0;
 	font-size: 1.5rem;
 }
 
 .menu-header a:hover {
-	background-color:transparent;
+	background-color: transparent;
 }
+
+
 /*-------------------------------------------------------------
 # Share Modal
 --------------------------------------------------------------*/
@@ -664,12 +759,7 @@ Footer
 }
 
 .footer-social-container i {
-	transition: all .5s ease-in-out;
 	padding: 5px 10px;
-}
-
-.footer-social-container i:hover {
-	transform: rotate(360deg);
 }
 
 .footer-social-container a:hover {

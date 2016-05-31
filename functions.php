@@ -76,6 +76,11 @@ function materializecss_theme_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	
+	
+	add_image_size( 'archive-list-img', 420, 420 );
+	add_image_size( 'featured-img', 1200, 1200 );
+	
 }
 endif;
 add_action( 'after_setup_theme', 'materializecss_theme_setup' );
@@ -155,9 +160,10 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 
-/**
-Function to display appropriate title in header
-**/
+// =========================================================================
+// DISPLAY APPROPRIATE TITLE IN HEADER
+// =========================================================================
+
 function headerTitle() {
 	if (is_category()) {
 		single_cat_title();
@@ -177,9 +183,10 @@ function headerTitle() {
 	
 }
 
-/***
-Remove Wordpress hardcoded image dimensions
-**/
+// =========================================================================
+// REMOVE WP HARD CODED IMAGES DIMENSIONS
+// =========================================================================
+
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 
@@ -189,9 +196,10 @@ function remove_thumbnail_dimensions( $html ) {
 }
 
 
-/*----------------------------
-Theme Settings config
------------------------------*/
+// =========================================================================
+// DYNAMIC THEME COLORS & SOCIAL SETTINGS
+// =========================================================================
+
 function theme_settings_page()
 {
     ?>
@@ -545,27 +553,54 @@ function material_styling() {
 		.widget_nav_menu .sub-menu .current-menu-item a {
 				color: <?php echo $accent_color; ?>!important;
 		}
+		.list-post-background {
+			background-color:<?php echo $primary_color; ?>;
+		}
+		.list-link-btn,
+		.list-link-btn:hover {
+			background-color:<?php echo $accent_color; ?>;
+		}
+		.posts-navigation a {
+			color:<?php echo $accent_color; ?>;
+		}
 	</style>
 <?php }
 
-// functions.php
 
-    // =========================================================================
-    // REMOVE JUNK FROM HEAD
-    // =========================================================================
-    remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
-    remove_action('wp_head', 'wp_generator'); // remove wordpress version
+// =========================================================================
+// REMOVE JUNK FROM HEAD
+// =========================================================================
+remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
+remove_action('wp_head', 'wp_generator'); // remove wordpress version
 
-    remove_action('wp_head', 'feed_links', 2); // remove rss feed links (make sure you add them in yourself if youre using feedblitz or an rss service)
-    remove_action('wp_head', 'feed_links_extra', 3); // removes all extra rss feed links
+remove_action('wp_head', 'feed_links', 2); // remove rss feed links (make sure you add them in yourself if youre using feedblitz or an rss service)
+remove_action('wp_head', 'feed_links_extra', 3); // removes all extra rss feed links
 
-    remove_action('wp_head', 'index_rel_link'); // remove link to index page
-    remove_action('wp_head', 'wlwmanifest_link'); // remove wlwmanifest.xml (needed to support windows live writer)
+remove_action('wp_head', 'index_rel_link'); // remove link to index page
+remove_action('wp_head', 'wlwmanifest_link'); // remove wlwmanifest.xml (needed to support windows live writer)
 
-    remove_action('wp_head', 'start_post_rel_link', 10, 0); // remove random post link
-    remove_action('wp_head', 'parent_post_rel_link', 10, 0); // remove parent post link
-    remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // remove the next and previous post links
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+remove_action('wp_head', 'start_post_rel_link', 10, 0); // remove random post link
+remove_action('wp_head', 'parent_post_rel_link', 10, 0); // remove parent post link
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // remove the next and previous post links
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
-    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+
+// =========================================================================
+// OPEN GRAPH PROTOCOLE
+// =========================================================================
+
+
+add_action('wp_head','open_graph');
+
+function open_graph() {
+	if (have_posts()):while(have_posts()):the_post(); endwhile; endif;?>
+		<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
+		<meta property="og:url" content="<?php the_permalink() ?>"/>
+		<meta property="og:title" content="<?php single_post_title(''); ?>" />
+		<meta property="og:description" content="<?php echo strip_tags(get_the_excerpt($post->ID)); ?>" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="<?php the_post_thumbnail_url('medium'); ?>" />
+	<?php }
     

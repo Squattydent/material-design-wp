@@ -27,7 +27,7 @@
 		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/css/jquery-ui.min.css">
 		<!-- Font Awesome Min CSS  -->
 		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/css/font-awesome.min.css">
-		</script>
+		<!-- Facebook Open Graph -->
 		<?php wp_head(); ?>
 	</head>
 

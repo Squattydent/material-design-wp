@@ -10,20 +10,31 @@
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<div class="row">
-			<div class="col s12" id="list-search-container">
-				<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-				<?php if ( 'post' === get_post_type() ) : ?>
-				<div class="entry-meta">
-					<?php materializecss_theme_posted_on(); ?>
+			<div id="list-search-container">
+				<div class="list-post-background" <?php 
+					if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+						echo 'style="background-image: url(';
+						the_post_thumbnail_url('medium');
+						echo ')"';
+					} else { /* -- */ } ?>>
+				<h2><a href="<?php echo get_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 				</div>
-				<!-- .entry-meta -->
-				<?php endif; ?>
-				<!-- .entry-header -->
-				<div class="entry-summary">
-					<?php the_excerpt(); ?>
+				<div class="right">
+					<a href="<?php echo get_permalink(); ?>" class="btn-floating btn-large waves-effect waves-light list-link-btn right"><i class="material-icons">link</i></a>
+				</div>
+				<div class="list-post-content">
+				<?php if ( 'post' === get_post_type() ) : ?>
+					<div class="entry-meta">
+						<?php materializecss_theme_posted_on(); ?>
+					</div>
+					<!-- .entry-meta -->
+					<?php	endif; ?>
+					<!-- .entry-header -->
+					<div class="entry-content">
+						<?php the_excerpt(); ?>
+					</div>
+					<!-- .entry-content -->
 				</div>
 			</div>
-		</div>
 	</article>
 	<!-- #post-## -->
