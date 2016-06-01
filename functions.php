@@ -429,149 +429,149 @@ function material_styling() {
 	if (empty($divider_color)) {
 		$divider_color = "#e0e0e0";
 	} ?>
-	<style type="text/css">
-		html {
-		color: <?php echo $primary_text; ?>;
-		}
-		.menu-header {
-		border-bottom: 1px solid <?php echo $divider_color; ?>;
-		}
-		.menu-header a,
-		.menu-header a:hover {
-			color: <?php echo $secondary_text; ?>!important;
-		}
-		{
-			color: <?php echo $secondary_text; ?>;
-		}
-		header {
-		background-color:<?php echo $primary_color; ?>;
-		}
-		.primary-color {
-		background-color:<?php echo $primary_color; ?>!important;
-		}
-		.dark-primary-color {
-		background-color:<?php echo $dark_primary_color; ?>!important;
-		}
-		label {
-		color: <?php echo $secondary_text; ?>;
-		}
-		hr {
-		color: <?php echo $divider_color; ?>;
-		background-color: <?php echo $divider_color; ?>;
-		}
-		a {
-		color: <?php echo $accent_color; ?>;
-		}
-		a:hover {
-		color: <?php echo $accent_color; ?>;
-		}
-		h1,h2,h3,h4,h5,h6 {
-		color: <?php echo $primary_color; ?>;
-		}
-		.btn:hover,
-		.btn-large:hover {
-		color: <?php echo $button_color; ?>;
-		}
-		blockquote {
-		border-left: 5px solid <?php echo $accent_color; ?>;
-		}
-		.widget-title {
-		color: <?php echo $secondary_text; ?>;
-		}
-		.widget {
-		border-bottom: 0px solid <?php echo $divider_color; ?>;
-		}
-		input[type="button"],
-		input[type="reset"],
-		input[type="submit"] {
-		background-color: <?php echo $button_color; ?>;
-		}
+<style type="text/css">
+html {
+color: <?php echo $primary_text; ?>;
+}
+.menu-header {
+border-bottom: 1px solid <?php echo $divider_color; ?>;
+}
+.menu-header a,
+.menu-header a:hover {
+color: <?php echo $secondary_text; ?>!important;
+}
+{
+color: <?php echo $secondary_text; ?>;
+}
+header {
+background-color:<?php echo $primary_color; ?>;
+}
+.primary-color {
+background-color:<?php echo $primary_color; ?>!important;
+}
+.dark-primary-color {
+background-color:<?php echo $dark_primary_color; ?>!important;
+}
+label {
+color: <?php echo $secondary_text; ?>;
+}
+hr {
+color: <?php echo $divider_color; ?>;
+background-color: <?php echo $divider_color; ?>;
+}
+a {
+color: <?php echo $accent_color; ?>;
+}
+a:hover {
+color: <?php echo $accent_color; ?>;
+}
+h1,h2,h3,h4,h5,h6 {
+color: <?php echo $primary_color; ?>;
+}
+.btn:hover,
+.btn-large:hover {
+color: <?php echo $button_color; ?>;
+}
+blockquote {
+border-left: 5px solid <?php echo $accent_color; ?>;
+}
+.widget-title {
+color: <?php echo $secondary_text; ?>;
+}
+.widget {
+border-bottom: 0px solid <?php echo $divider_color; ?>;
+}
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+background-color: <?php echo $button_color; ?>;
+}
 
-		input[type="button"]:hover,
-		input[type="reset"]:hover,
-		input[type="submit"]:hover {
-		background-color: <?php echo $button_color; ?>;
-		}
-		
-		input:not([type]),
-		input[type=text],
-		input[type=password],
-		input[type=email],
-		input[type=url],
-		input[type=time],
-		input[type=date],
-		input[type=datetime],
-		input[type=datetime-local],
-		input[type=tel],
-		input[type=number],
-		input[type=search] {
-			border-bottom: 1px solid <?php echo $divider_color; ?>;
-		}
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+background-color: <?php echo $button_color; ?>;
+}
 
-		input:not([type]):focus:not([readonly]),
-		input[type=text]:focus:not([readonly]),
-		input[type=password]:focus:not([readonly]),
-		input[type=email]:focus:not([readonly]),
-		input[type=url]:focus:not([readonly]),
-		input[type=time]:focus:not([readonly]),
-		input[type=date]:focus:not([readonly]),
-		input[type=datetime]:focus:not([readonly]),
-		input[type=datetime-local]:focus:not([readonly]),
-		input[type=tel]:focus:not([readonly]),
-		input[type=number]:focus:not([readonly]),
-		input[type=search]:focus:not([readonly]),
-		textarea.materialize-textarea:focus:not([readonly]) {
-		border-bottom: 1px solid <?php echo $accent_color; ?>;
-		box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
-		}
-		textarea {
-		border-bottom: 1px solid <?php echo $divider_color; ?>;
-		}
-		textarea:focus {
-		border-bottom: 1px solid <?php echo $accent_color; ?>;
-		box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
-		}
-		#footer-menu li a,
-		#footer-menu ul li a
-		{
-		color: <?php echo $button_color; ?>;
-		}
-		.side-nav a,
-		.side-nav a:hover {
-		color:<?php echo $primary_text; ?>;
-		}
-		.sub-menu .current-menu-item a {
-		color: <?php echo $primary_color; ?>;
-		}
-		#search-btn, #close-btn, #btn-share {
-			background-color:<?php echo $button_color; ?>;
-		}
-		#share-modal a, #share-modal h4 {
-			color:<?php echo $secondary_text; ?>;
-		}
-		#share-modal a:hover {
-			color:<?php echo $primary_text; ?>;
-		}
-		.adjacent-post {
-			background-color:<?php echo $primary_color; ?>;
-		}
-		.related-post-title{
-			color:<?php echo $secondary_text; ?>;
-		}
-		.widget_nav_menu .sub-menu .current-menu-item a {
-				color: <?php echo $accent_color; ?>!important;
-		}
-		.list-post-background {
-			background-color:<?php echo $primary_color; ?>;
-		}
-		.list-link-btn,
-		.list-link-btn:hover {
-			background-color:<?php echo $button_color; ?>;
-		}
-		.posts-navigation a {
-			color:<?php echo $accent_color; ?>;
-		}
-	</style>
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search] {
+border-bottom: 1px solid <?php echo $divider_color; ?>;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+border-bottom: 1px solid <?php echo $accent_color; ?>;
+box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
+}
+textarea {
+border-bottom: 1px solid <?php echo $divider_color; ?>;
+}
+textarea:focus {
+border-bottom: 1px solid <?php echo $accent_color; ?>;
+box-shadow: 0 1px 0 0 <?php echo $accent_color; ?>;
+}
+#footer-menu li a,
+#footer-menu ul li a
+{
+color: <?php echo $button_color; ?>;
+}
+.side-nav a,
+.side-nav a:hover {
+color:<?php echo $primary_text; ?>;
+}
+.sub-menu .current-menu-item a {
+color: <?php echo $primary_color; ?>;
+}
+#search-btn, #close-btn, #btn-share {
+background-color:<?php echo $button_color; ?>;
+}
+#share-modal a, #share-modal h4 {
+color:<?php echo $secondary_text; ?>;
+}
+#share-modal a:hover {
+color:<?php echo $primary_text; ?>;
+}
+.adjacent-post {
+background-color:<?php echo $primary_color; ?>;
+}
+.related-post-title{
+color:<?php echo $secondary_text; ?>;
+}
+.widget_nav_menu .sub-menu .current-menu-item a {
+color: <?php echo $accent_color; ?>!important;
+}
+.list-post-background {
+background-color:<?php echo $primary_color; ?>;
+}
+.list-link-btn,
+.list-link-btn:hover {
+background-color:<?php echo $button_color; ?>;
+}
+.posts-navigation a {
+color:<?php echo $accent_color; ?>;
+}
+</style>
 <?php }
 
 
@@ -603,12 +603,13 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
 add_action('wp_head','open_graph');
 
 function open_graph() {
-	if (have_posts()):while(have_posts()):the_post(); endwhile; endif;?>
+	if (have_posts()):while(have_posts()):the_post(); ?>
 		<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
 		<meta property="og:url" content="<?php the_permalink() ?>"/>
 		<meta property="og:title" content="<?php single_post_title(''); ?>" />
-		<meta property="og:description" content="<?php echo strip_tags(get_the_excerpt($post->ID)); ?>" />
+		<meta property="og:description" content="<?php echo get_the_excerpt(); ?>" />
 		<meta property="og:type" content="article" />
+    <?php if (has_post_thumbnail()){ ?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url('medium'); ?>" />
-	<?php }
-
+		<?php } ?>
+	<?php endwhile; endif; } ?>
