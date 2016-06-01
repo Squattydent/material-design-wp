@@ -59,6 +59,11 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	display: block;
 }
 
+figure {
+	max-width:100%;
+	margin:0;
+}
+
 
 /*--------------------------------------------------------------
 >>> Styling White sections
@@ -84,6 +89,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 #search-container,
 #single-entry-meta-container,
 #error-container,
+#home-container,
 #single-related-posts-container {
 	margin-top: 10px;
 }
@@ -125,6 +131,7 @@ hr {
 
 article img {
 	max-width: 100%;
+	height: auto;
 }
 
 
@@ -180,6 +187,21 @@ h2 {
 	margin: 1rem 0;
 }
 
+.entry-content ul {
+	padding-left:20px;
+}
+
+.entry-content ol {
+	padding-left:20px;
+}
+
+.entry-content iframe {
+	max-width:100%;
+}
+
+.post_format-post-format-image img {
+	width:100%;
+}
 
 /*--------------------------------------------------------------
 Header Search Form
@@ -351,9 +373,10 @@ margin-bottom:20px;
 
 .list-post-background h2 {
 	margin: 0;
-	padding: 30px;
+	padding: 20px;
 	position: absolute;
 	bottom: 0;
+	font-size:3rem;
 }
 
 .list-post-background h2 a {
@@ -529,6 +552,10 @@ input[type="submit"]:hover {
 
 .comment-author img {
 	border-radius:100%;
+}
+
+.comment-navigation {
+	background-color:#fff;
 }
 
 /*-------------------------------------------------------------

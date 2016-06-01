@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package materializecss-theme
+ * @package material-design-wp
  */
 
 ?>
@@ -24,9 +24,9 @@
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- JQuery Ui Min css  -->
-		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/css/jquery-ui.min.css">
+		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/material-design-wp/css/jquery-ui.min.css">
 		<!-- Font Awesome Min CSS  -->
-		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/material-design-wp/css/font-awesome.min.css">
 		<!-- Facebook Open Graph -->
 		<?php wp_head(); ?>
 	</head>

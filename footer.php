@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package materializecss-theme
+ * @package material-design-wp
  */
 
 ?>
@@ -46,8 +46,8 @@
 		<div class="footer-copyright dark-primary-color">
 			<div class="container">
 				<span>Theme by <a class="white-text" href="http://www.lugdev.com/" rel="designer">Lugdev.com</a></span>
-				<a class="grey-text text-lighten-4 right" href="<?php echo esc_url( __( 'https://wordpress.org/', 'materializecss-theme' ) ); ?>">
-				<?php printf( esc_html__( 'Proudly powered by %s', 'materializecss-theme' ), 'WordPress' ); ?>
+				<a class="grey-text text-lighten-4 right" href="<?php echo esc_url( __( 'https://wordpress.org/', 'material-design-wp' ) ); ?>">
+				<?php printf( esc_html__( 'Proudly powered by %s', 'material-design-wp' ), 'WordPress' ); ?>
 				</a>
 			</div>
 		</div>
@@ -73,9 +73,9 @@
 	<!-- Compiled and minified Materialize JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <!-- JQuery Ui Min js  -->
-	<script src="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/js/jquery-ui.min.js"></script>
+	<script src="<?php echo site_url(); ?>/wp-content/themes/material-design-wp/js/jquery-ui.min.js"></script>
 	<!-- Our File materialize-wordpress.js  -->
-	<script src="<?php echo site_url(); ?>/wp-content/themes/materializecss-theme/js/materialize-wordpress.js"></script>
+	<script src="<?php echo site_url(); ?>/wp-content/themes/material-design-wp/js/material-design-wp.js"></script>
 	</body>
 
 	</html>

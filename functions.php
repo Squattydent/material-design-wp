@@ -1,10 +1,10 @@
 <?php
 /**
- * materializecss-theme functions and definitions.
+ * material-design-wp functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package materializecss-theme
+ * @package material-design-wp
  */
 
 if ( ! function_exists( 'materializecss_theme_setup' ) ) :
@@ -19,10 +19,10 @@ function materializecss_theme_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on materializecss-theme, use a find and replace
-	 * to change 'materializecss-theme' to the name of your theme in all the template files.
+	 * If you're building a theme based on material-design-wp, use a find and replace
+	 * to change 'material-design-wp' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'materializecss-theme', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'material-design-wp', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function materializecss_theme_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'materializecss-theme' )
+		'primary' => esc_html__( 'Primary', 'material-design-wp' )
 	) );
 
 	/*
@@ -104,9 +104,9 @@ add_action( 'after_setup_theme', 'materializecss_theme_content_width', 0 );
  */
 function materializecss_theme_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'materializecss-theme' ),
+		'name'          => esc_html__( 'Sidebar', 'material-design-wp' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'materializecss-theme' ),
+		'description'   => esc_html__( 'Add widgets here.', 'material-design-wp' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<span class="widget-title">',
@@ -119,13 +119,13 @@ add_action( 'widgets_init', 'materializecss_theme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function materializecss_theme_scripts() {
-	wp_enqueue_style( 'materializecss-theme-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'material-design-wp-style', get_stylesheet_uri() );
 
 	/* We Won't need the Navigation Support from _s original Theme */
-	// wp_enqueue_script( 'materializecss-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// wp_enqueue_script( 'material-design-wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	/* We won't use the Skip Link funtionnalities anyway */
-	// wp_enqueue_script( 'materializecss-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	// wp_enqueue_script( 'material-design-wp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -172,15 +172,16 @@ function headerTitle() {
 	} elseif (is_author()) {
 		the_author();
 	} elseif (is_search()) {
-		printf( esc_html__( 'Search Results for: %s', 'materializecss-theme' ), '<span>' . get_search_query() . '</span>' );
+		printf( esc_html__( 'Search Results for: %s', 'material-design-wp' ), '<span>' . get_search_query() . '</span>' );
 	} elseif (is_tag()) {
 		single_tag_title();
 	} elseif (is_404()) {
 		echo "Code 404";
 	} elseif (is_archive()) {
 		the_archive_title ();
-	}
-	
+	} elseif ( is_home() or is_front_page() ) {
+		bloginfo( 'name' );
+	}	
 }
 
 // =========================================================================
@@ -571,28 +572,11 @@ background-color:<?php echo $button_color; ?>;
 .posts-navigation a {
 color:<?php echo $accent_color; ?>;
 }
+.comment-navigation a {
+color:<?php echo $accent_color; ?>;
+}
 </style>
 <?php }
-
-
-// =========================================================================
-// REMOVE JUNK FROM HEAD
-// =========================================================================
-remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
-remove_action('wp_head', 'wp_generator'); // remove wordpress version
-
-remove_action('wp_head', 'feed_links', 2); // remove rss feed links (make sure you add them in yourself if youre using feedblitz or an rss service)
-remove_action('wp_head', 'feed_links_extra', 3); // removes all extra rss feed links
-
-remove_action('wp_head', 'index_rel_link'); // remove link to index page
-remove_action('wp_head', 'wlwmanifest_link'); // remove wlwmanifest.xml (needed to support windows live writer)
-
-remove_action('wp_head', 'start_post_rel_link', 10, 0); // remove random post link
-remove_action('wp_head', 'parent_post_rel_link', 10, 0); // remove parent post link
-remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // remove the next and previous post links
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 
 // =========================================================================
