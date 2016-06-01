@@ -1,23 +1,20 @@
 /*
-Theme Name: materializecss-theme
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
+Theme Name: Material Design WP
+Theme URI: http://material-design-wp.lugdev.com/
+Author: Vladimir Lorentz
+Author URI: http://www.lugdev.com/
+Description: Material Design Theme for Wordpress based on the Google Guidelines, and using the Materialize CSS framework.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: materializecss-theme
-Tags:
+Text Domain: http://www.lugdev.com/
+Tags : right-sidebar, fixed-layout, custom-colors, featured-images, theme-options
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
 materializecss-theme is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 
 
@@ -44,6 +41,22 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+## Theme Check
+--------------------------------------------------------------*/
+
+.sticky {
+	display: block;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+.bypostauthor {
+	display: block;
 }
 
 
@@ -250,6 +263,9 @@ Page content
 	margin-top: 5px;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.05);
 	cursor: default;
+	background-position:center center;
+	background-size:cover;
+	background-repeat:none;
 }
 
 .adjacent-post a {
@@ -511,6 +527,9 @@ input[type="submit"]:hover {
 	font-size: 1.6rem;
 }
 
+.comment-author img {
+	border-radius:100%;
+}
 
 /*-------------------------------------------------------------
 # Menu

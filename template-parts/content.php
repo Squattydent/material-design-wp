@@ -25,7 +25,12 @@
 					</div>
 					<?php } /*-- Post thumbnail  --*/	?>
 					<div class="entry-content">
-						<?php the_content(); ?>
+						<?php the_content(); 
+						wp_link_pages( array(
+							'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
+							'after'  => '</div>',
+						) );
+						?>
 					</div>
 				</div>
 				<?php if ( 'post' === get_post_type() ) { ?>
@@ -37,24 +42,27 @@
 				<?php } /*-- Posted On  --*/ ?>
 				<div class="col s12" id="single-related-posts-container">
 					<div class="row" style="margin:0;">
-						<?php	
-					$prev_post = get_previous_post();
-					$prev_ex_con = ( $prev_post->post_excerpt ) ? $prev_post->post_excerpt : strip_shortcodes( $prev_post->post_content );
-					$prev_text = wp_trim_words( apply_filters( 'the_excerpt', $prev_ex_con ), 15 );
+					<?php 
+							$prev_post = get_previous_post();
+							$prev_ex_con = ( $prev_post->post_excerpt ) ? $prev_post->post_excerpt : strip_shortcodes( $prev_post->post_content );
+							$prev_text = wp_trim_words( apply_filters( 'the_excerpt', $prev_ex_con ), 15 );
+							$prev_thumb_url = get_the_post_thumbnail_url($prev_post->ID, 'medium');
 
-					$next_post = get_next_post();
-					$next_ex_con = ( $next_post->post_excerpt ) ? $next_post->post_excerpt : strip_shortcodes( $next_post->post_content );
-					$next_text = wp_trim_words( apply_filters( 'the_excerpt', $next_ex_con ), 15 );
+							$next_post = get_next_post();
+							$next_ex_con = ( $next_post->post_excerpt ) ? $next_post->post_excerpt : strip_shortcodes( $next_post->post_content );
+							$next_text = wp_trim_words( apply_filters( 'the_excerpt', $next_ex_con ), 15 );
+							$next_thumb_url = get_the_post_thumbnail_url($next_post->ID, 'medium');
 
-					if (!empty($prev_post) && !empty($next_post)) {
-						$adjacent_posts = "2";
-					}
-					else {
-						$adjacent_posts = "1";
-					} 
-					if (!empty( $prev_post )) { ?>
+							if (!empty($prev_post) && !empty($next_post)) {
+								$adjacent_posts = "2";
+							}
+							else {
+								$adjacent_posts = "1";
+							} 
+						?>
+				    <?php if (!empty( $prev_post )) { ?>
 							<div class="col s12 m12 l<?php echo 12 / $adjacent_posts; ?>" style="padding:0;">
-								<div class="adjacent-post waves-effect waves-light" id="prev-post-container">
+								<div class="adjacent-post waves-effect waves-light" id="prev-post-container" style="background-image:url('<?php echo $prev_thumb_url; ?>')">
 									<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><?php echo $prev_post->post_title; ?></a>
 									<a href="<?php echo get_permalink( $prev_post->ID ); ?>">
 										<p>
@@ -67,7 +75,7 @@
 							<?php }
 					    if (!empty( $next_post )) { ?>
 							<div class="col s12 m12 l<?php echo 12 / $adjacent_posts; ?>" style="padding:0;">
-								<div class="adjacent-post waves-effect waves-light" id="next-post-container">
+								<div class="adjacent-post waves-effect waves-light" id="next-post-container" style="background-image:url('<?php echo $next_thumb_url; ?>')"> 
 									<a href="<?php echo get_permalink( $next_post->ID ); ?>"><?php echo $next_post->post_title; ?></a>
 									<a href="<?php echo get_permalink( $next_post->ID ); ?>">
 										<p>

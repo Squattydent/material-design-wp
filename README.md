@@ -6,7 +6,7 @@ This theme has been created in order to implement the Material Design Guidelines
 Live Demo
 ----------
 
-Can be found here : http://materializecss-theme.lugdev.com
+Can be found here : http://material-design-wp.lugdev.com
 
 
 It relies on several libraries :

@@ -218,7 +218,7 @@ function theme_settings_page()
 
 function add_theme_menu_item()
 {
-	add_menu_page("Theme Config", "Theme Config", "manage_options", "theme-config", "theme_settings_page", null, 99);
+	add_theme_page("Theme Config", "Theme Config", "manage_options", "theme-config", "theme_settings_page", null, 99);
 }
 
 add_action("admin_menu", "add_theme_menu_item");
@@ -233,6 +233,7 @@ function display_color_help_element()
 function display_primary_color_element()
 {
 	?>
+			<label>Used on Header & Footer Backgroud + Titles</label><br>
     	<input type="text" name="primary_color" id="primary_color" value="<?php echo get_option('primary_color'); ?>" />
     <?php
 }
@@ -240,6 +241,7 @@ function display_primary_color_element()
 function display_dark_primary_color_element()
 {
 	?>
+			<label>Used in copyright footer background</label><br>
     	<input type="text" name="dark_primary_color" id="dark_primary_color" value="<?php echo get_option('dark_primary_color'); ?>" />
     <?php
 }
@@ -247,6 +249,7 @@ function display_dark_primary_color_element()
 function display_light_primary_color_element()
 {
 	?>
+			<label>Not used at the moment</label><br>
     	<input type="text" name="light_primary_color" id="light_primary_color" value="<?php echo get_option('light_primary_color'); ?>" />
     <?php
 }
@@ -254,20 +257,23 @@ function display_light_primary_color_element()
 function display_accent_color_element()
 {
 	?>
+			<label>Used on links in contents, should be dark enough to display on white or light grey background.</label><br>
     	<input type="text" name="accent_color" id="accent_color" value="<?php echo get_option('accent_color'); ?>" />
     <?php
 }
 
-function display_icon_color_element()
+function display_button_color_element()
 {
 	?>
-    	<input type="text" name="icon_color" id="icon_color" value="<?php echo get_option('icon_color'); ?>" />
+			<label>Used on all buttons !</label><br>
+    	<input type="text" name="button_color" id="button_color" value="<?php echo get_option('button_color'); ?>" />
     <?php
 }
 
 function display_primary_text_element()
 {
 	?>
+			<label>Used on mosts texts and contents</label><br>
     	<input type="text" name="primary_text" id="primary_text" value="<?php echo get_option('primary_text'); ?>" />
     <?php
 }
@@ -275,6 +281,7 @@ function display_primary_text_element()
 function display_secondary_text_element()
 {
 	?>
+			<label>Used on widget titles and secondary contents</label><br>
     	<input type="text" name="secondary_text" id="secondary_text" value="<?php echo get_option('secondary_text'); ?>" />
     <?php
 }
@@ -282,6 +289,7 @@ function display_secondary_text_element()
 function display_divider_color_element()
 {
 	?>
+			<label>Used to divide elements and as input border</label><br>
     	<input type="text" name="divider_color" id="divider_color" value="<?php echo get_option('divider_color'); ?>" />
     <?php
 }
@@ -353,7 +361,7 @@ function display_theme_config_fields()
 	add_settings_field("primary_color", "Primary Color", "display_primary_color_element", "theme-options", "section");
 	add_settings_field("dark_primary_color", "Dark Primary Color", "display_dark_primary_color_element", "theme-options", "section");
 	add_settings_field("light_primary_color", "Light Primary Color", "display_light_primary_color_element", "theme-options", "section");
-	add_settings_field("icon_color", "Icons Color", "display_icon_color_element", "theme-options", "section");
+	add_settings_field("button_color", "Buttons Color", "display_button_color_element", "theme-options", "section");
 	add_settings_field("accent_color", "Accent Color", "display_accent_color_element", "theme-options", "section");
 	add_settings_field("primary_text", "Primary Text", "display_primary_text_element", "theme-options", "section");
 	add_settings_field("secondary_text", "Secondary Text", "display_secondary_text_element", "theme-options", "section");
@@ -361,7 +369,7 @@ function display_theme_config_fields()
 	register_setting("section", "primary_color");
 	register_setting("section", "dark_primary_color");
 	register_setting("section", "light_primary_color");
-	register_setting("section", "icon_color");
+	register_setting("section", "button_color");
 	register_setting("section", "accent_color");
 	register_setting("section", "primary_text");
 	register_setting("section", "secondary_text");
@@ -401,9 +409,9 @@ function material_styling() {
   if (empty($light_primary_color)) {
 		$light_primary_color = "#BBDEFB";
 	}
-	$icon_color = get_option('icon_color');
-	if (empty($icon_color)) {
-		$icon_color = "#FF5722";
+	$button_color = get_option('button_color');
+	if (empty($button_color)) {
+		$button_color = "#FF5722";
 	}
 	$accent_color = get_option('accent_color');
   if (empty($accent_color)) {
@@ -462,7 +470,7 @@ function material_styling() {
 		}
 		.btn:hover,
 		.btn-large:hover {
-		color: <?php echo $icon_color; ?>;
+		color: <?php echo $button_color; ?>;
 		}
 		blockquote {
 		border-left: 5px solid <?php echo $accent_color; ?>;
@@ -476,13 +484,13 @@ function material_styling() {
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-		background-color: <?php echo $icon_color; ?>;
+		background-color: <?php echo $button_color; ?>;
 		}
 
 		input[type="button"]:hover,
 		input[type="reset"]:hover,
 		input[type="submit"]:hover {
-		background-color: <?php echo $icon_color; ?>;
+		background-color: <?php echo $button_color; ?>;
 		}
 		
 		input:not([type]),
@@ -526,7 +534,7 @@ function material_styling() {
 		#footer-menu li a,
 		#footer-menu ul li a
 		{
-		color: <?php echo $icon_color; ?>;
+		color: <?php echo $button_color; ?>;
 		}
 		.side-nav a,
 		.side-nav a:hover {
@@ -536,7 +544,7 @@ function material_styling() {
 		color: <?php echo $primary_color; ?>;
 		}
 		#search-btn, #close-btn, #btn-share {
-			background-color:<?php echo $icon_color; ?>;
+			background-color:<?php echo $button_color; ?>;
 		}
 		#share-modal a, #share-modal h4 {
 			color:<?php echo $secondary_text; ?>;
@@ -558,7 +566,7 @@ function material_styling() {
 		}
 		.list-link-btn,
 		.list-link-btn:hover {
-			background-color:<?php echo $accent_color; ?>;
+			background-color:<?php echo $button_color; ?>;
 		}
 		.posts-navigation a {
 			color:<?php echo $accent_color; ?>;
@@ -603,4 +611,4 @@ function open_graph() {
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content="<?php the_post_thumbnail_url('medium'); ?>" />
 	<?php }
-    
+
